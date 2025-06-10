@@ -2,6 +2,13 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowLeft, Phone, MapPin, Clock, Mail, Truck } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Контакти - TractorDiscs",
+  description:
+    "Зв'яжіться з нами для отримання консультації або оформлення замовлення. Ми завжди готові допомогти вам підібрати найкращі диски для вашого трактора.",
+}
 
 export default function ContactsPage() {
   return (

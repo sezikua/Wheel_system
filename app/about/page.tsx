@@ -1,8 +1,16 @@
+import { CardContent } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, Factory, Cog, Shield, Target, Truck } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Про нашу компанію - TractorDiscs",
+  description:
+    "Ми - сучасне виробництво систем здвоювання та систем для роботи в міжрядному обробітку. Дізнайтеся більше про нашу історію та переваги.",
+}
 
 export default function AboutPage() {
   return (
