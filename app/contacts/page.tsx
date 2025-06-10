@@ -15,9 +15,12 @@ export default function ContactsPage() {
     <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="bg-gray-100/80 backdrop-blur-md shadow-sm border-b">
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-4 py-3">
+          {" "}
+          {/* Reduced py-4 to py-3 for smaller menu */}
           <div className="flex items-center justify-between">
-            <Image src="/images/twinforce-logo.png" alt="Twinforce Wheels Logo" width={150} height={40} />
+            <Image src="/images/twinforce-logo.png" alt="Twinforce Wheels Logo" width={120} height={30} />{" "}
+            {/* Adjusted size */}
             <div className="hidden md:flex flex-1 justify-center space-x-6">
               <Link href="/" className="text-gray-600 hover:text-green-600">
                 {`Головна`}
@@ -32,7 +35,7 @@ export default function ContactsPage() {
                 {`Замовити`}
               </Link>
             </div>
-            <div className="hidden md:block w-[150px]"></div>
+            <div className="hidden md:block w-[120px]"></div> {/* Adjusted width to match logo */}
           </div>
         </div>
       </nav>

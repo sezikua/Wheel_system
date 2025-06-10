@@ -109,7 +109,9 @@ export default function ManufacturerPageClient() {
     <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-100/80 backdrop-blur-md shadow-sm border-b">
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-4 py-3">
+          {" "}
+          {/* Reduced py-4 to py-3 for smaller menu */}
           <div className="flex items-center justify-between">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -117,7 +119,8 @@ export default function ManufacturerPageClient() {
               transition={{ duration: 0.5 }}
               className="flex items-center space-x-2"
             >
-              <Image src="/images/twinforce-logo.png" alt="Twinforce Wheels Logo" width={150} height={40} />
+              <Image src="/images/twinforce-logo.png" alt="Twinforce Wheels Logo" width={120} height={30} />{" "}
+              {/* Adjusted size */}
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 20 }}
@@ -142,7 +145,7 @@ export default function ManufacturerPageClient() {
                 <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-green-600"></span>
               </Link>
             </motion.div>
-            <div className="hidden md:block w-[150px]"></div>
+            <div className="hidden md:block w-[120px]"></div> {/* Adjusted width to match logo */}
           </div>
         </div>
       </nav>
