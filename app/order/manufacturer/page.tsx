@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
 import { ArrowLeft, ArrowRight, Truck } from "lucide-react"
 
 type Manufacturer = {
@@ -94,10 +94,8 @@ export default function ManufacturerPage() {
     },
   ]
 
-  const handleNext = () => {
-    if (selectedManufacturer) {
-      window.location.href = `/order/series?type=${discType}&manufacturer=${selectedManufacturer}`
-    }
+  const handleNext = (manufacturerId: string) => {
+    window.location.href = `/order/series?type=${discType}&manufacturer=${manufacturerId}`
   }
 
   const handleBack = () => {
@@ -135,6 +133,13 @@ export default function ManufacturerPage() {
       </nav>
 
       <div className="container mx-auto px-4 py-8">
+        <Button asChild variant="ghost" className="mb-6">
+          <Link href="/order">
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Повернутися до вибору типу дисків
+          </Link>
+        </Button>
+
         {/* Progress Indicator */}
         <div className="mb-8">
           <div className="flex items-center justify-center space-x-4">
@@ -205,21 +210,22 @@ export default function ManufacturerPage() {
                   </div>
                 )}
               </CardContent>
+              {selectedManufacturer === manufacturer.id && (
+                <CardFooter className="pt-0 pb-4 flex justify-center">
+                  <Button
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      handleNext(manufacturer.id)
+                    }}
+                    className="bg-green-600 hover:bg-green-700 w-full mt-4"
+                  >
+                    Далі: Вибір серії
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </CardFooter>
+              )}
             </Card>
           ))}
-        </div>
-
-        {/* Navigation */}
-        <div className="flex justify-between items-center">
-          <Button onClick={handleBack} variant="outline">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Назад
-          </Button>
-
-          <Button onClick={handleNext} disabled={!selectedManufacturer} className="bg-green-600 hover:bg-green-700">
-            Далі: Вибір серії
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
         </div>
 
         {/* Help Section */}
