@@ -1,8 +1,9 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowLeft, Phone, MapPin, Clock, Mail, Truck } from "lucide-react"
+import { ArrowLeft, Phone, MapPin, Clock } from "lucide-react"
 import type { Metadata } from "next"
+import Image from "next/image"
 
 export const metadata: Metadata = {
   title: `Контакти - TractorDiscs`,
@@ -13,16 +14,11 @@ export default function ContactsPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="bg-white shadow-sm border-b">
+      <nav className="bg-gray-100/80 backdrop-blur-md shadow-sm border-b">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
-                <Truck className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-xl font-bold text-gray-900">TractorDiscs</span>
-            </div>
-            <div className="hidden md:flex space-x-6">
+            <Image src="/images/twinforce-logo.png" alt="Twinforce Wheels Logo" width={150} height={40} />
+            <div className="hidden md:flex flex-1 justify-center space-x-6">
               <Link href="/" className="text-gray-600 hover:text-green-600">
                 {`Головна`}
               </Link>
@@ -36,6 +32,7 @@ export default function ContactsPage() {
                 {`Замовити`}
               </Link>
             </div>
+            <div className="hidden md:block w-[150px]"></div>
           </div>
         </div>
       </nav>
@@ -134,21 +131,6 @@ export default function ContactsPage() {
                   <a href="tel:+380686007030" className="text-green-600 font-medium hover:text-green-700">
                     {`068 600 70 30`}
                   </a>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-5 h-5 text-green-600" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg mb-1">{`Онлайн замовлення`}</h3>
-                  <p className="text-gray-600 mb-2">
-                    {`Скористайтеся нашою системою онлайн замовлення для швидкого та зручного оформлення заявки на диски.`}
-                  </p>
-                  <Button asChild variant="outline">
-                    <Link href="/order">{`Замовити онлайн`}</Link>
-                  </Button>
                 </div>
               </div>
 

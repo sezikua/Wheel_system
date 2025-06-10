@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, Factory, Cog, Shield, Target, Truck } from "lucide-react"
+import { ArrowLeft, Factory, Cog, Shield, Target } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -15,16 +15,11 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="bg-white shadow-sm border-b">
+      <nav className="bg-gray-100/80 backdrop-blur-md shadow-sm border-b">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
-                <Truck className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-xl font-bold text-gray-900">TractorDiscs</span>
-            </div>
-            <div className="hidden md:flex space-x-6">
+            <Image src="/images/twinforce-logo.png" alt="Twinforce Wheels Logo" width={150} height={40} />
+            <div className="hidden md:flex flex-1 justify-center space-x-6">
               <Link href="/" className="text-gray-600 hover:text-green-600">
                 {`Головна`}
               </Link>
@@ -38,6 +33,7 @@ export default function AboutPage() {
                 {`Замовити`}
               </Link>
             </div>
+            <div className="hidden md:block w-[150px]"></div>
           </div>
         </div>
       </nav>

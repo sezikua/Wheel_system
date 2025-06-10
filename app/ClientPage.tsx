@@ -3,20 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import {
-  ArrowRight,
-  CheckCircle,
-  Users,
-  Award,
-  Truck,
-  ChevronDown,
-  Zap,
-  Shield,
-  Settings,
-  Phone,
-  Mail,
-  MapPin,
-} from "lucide-react"
+import { ArrowRight, CheckCircle, Users, Award, ChevronDown, Zap, Shield, Settings, Phone, MapPin } from "lucide-react"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { AnimatedGradientBackground } from "@/components/ui/animated-gradient-background"
@@ -35,7 +22,7 @@ export default function ClientPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Modern Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-sm border-b">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-100/80 backdrop-blur-md shadow-sm border-b">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <motion.div
@@ -44,18 +31,13 @@ export default function ClientPage() {
               transition={{ duration: 0.5 }}
               className="flex items-center space-x-2"
             >
-              <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-green-700 rounded-lg flex items-center justify-center shadow-md">
-                <Truck className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-green-800">
-                TractorDiscs
-              </span>
+              <Image src="/images/twinforce-logo.png" alt="Twinforce Wheels Logo" width={200} height={50} />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="hidden md:flex space-x-6"
+              className="hidden md:flex flex-1 justify-center space-x-6"
             >
               <Link href="/" className="text-green-600 font-medium relative group">
                 {`Головна`}
@@ -74,6 +56,7 @@ export default function ClientPage() {
                 <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-green-600"></span>
               </Link>
             </motion.div>
+            <div className="hidden md:block w-[150px]"></div>
           </div>
         </div>
       </nav>
@@ -431,12 +414,9 @@ export default function ClientPage() {
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
-                  <Truck className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-lg font-bold">TractorDiscs</span>
+                <Image src="/images/twinforce-logo.png" alt="Twinforce Wheels Logo" width={150} height={40} />
               </div>
-              <p className="text-gray-400 mb-4">{`Професійні диски для тракторів. Якість та надійність з 2020 року.`}</p>
+              <p className="text-gray-400 mb-4">{`Професійні диски для тракторів. Якість та надійність від TWINFORCE WHEELS.`}</p>
               <div className="flex space-x-4">
                 <a
                   href="#"
@@ -455,7 +435,7 @@ export default function ClientPage() {
                   className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-600 transition-colors"
                 >
                   <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                    <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
                   </svg>
                 </a>
                 <a
@@ -509,12 +489,6 @@ export default function ClientPage() {
                   </a>
                 </li>
                 <li className="flex items-start">
-                  <Mail className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
-                  <a href="mailto:info@tractordiscs.com" className="text-gray-400 hover:text-white transition-colors">
-                    {`info@tractordiscs.com`}
-                  </a>
-                </li>
-                <li className="flex items-start">
                   <MapPin className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-gray-400">{`м. Київ, Україна`}</span>
                 </li>
@@ -523,7 +497,7 @@ export default function ClientPage() {
           </div>
 
           <div className="border-t border-gray-800 pt-8 mt-8 text-center">
-            <p className="text-gray-400">{`© ${new Date().getFullYear()} TractorDiscs. Всі права захищені.`}</p>
+            <p className="text-gray-400">{`© ${new Date().getFullYear()} TWINFORCE WHEELS. Всі права захищені.`}</p>
           </div>
         </div>
       </footer>

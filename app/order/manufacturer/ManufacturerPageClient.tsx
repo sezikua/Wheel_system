@@ -6,7 +6,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
-import { ArrowLeft, ArrowRight, Truck, CheckCircle, Phone } from "lucide-react"
+import { ArrowLeft, ArrowRight, CheckCircle, Phone } from "lucide-react"
 import { motion } from "framer-motion"
 import { AnimatedCard } from "@/components/ui/animated-card"
 import { SectionHeading } from "@/components/ui/section-heading"
@@ -108,7 +108,7 @@ export default function ManufacturerPageClient() {
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-sm border-b">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-100/80 backdrop-blur-md shadow-sm border-b">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <motion.div
@@ -117,18 +117,13 @@ export default function ManufacturerPageClient() {
               transition={{ duration: 0.5 }}
               className="flex items-center space-x-2"
             >
-              <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-green-700 rounded-lg flex items-center justify-center shadow-md">
-                <Truck className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-green-800">
-                TractorDiscs
-              </span>
+              <Image src="/images/twinforce-logo.png" alt="Twinforce Wheels Logo" width={150} height={40} />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="hidden md:flex space-x-6"
+              className="hidden md:flex flex-1 justify-center space-x-6"
             >
               <Link href="/" className="text-gray-600 hover:text-green-600 transition-colors relative group">
                 {`Головна`}
@@ -147,6 +142,7 @@ export default function ManufacturerPageClient() {
                 <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-green-600"></span>
               </Link>
             </motion.div>
+            <div className="hidden md:block w-[150px]"></div>
           </div>
         </div>
       </nav>
