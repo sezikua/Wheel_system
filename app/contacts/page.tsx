@@ -5,7 +5,7 @@ import { ArrowLeft, Phone, MapPin, Clock, Mail, Truck } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Контакти - TractorDiscs",
+  title: `Контакти - TractorDiscs`,
   description: `Зв'яжіться з нами для отримання консультації або оформлення замовлення. Ми завжди готові допомогти вам підібрати найкращі диски для вашого трактора.`,
 }
 
@@ -24,16 +24,16 @@ export default function ContactsPage() {
             </div>
             <div className="hidden md:flex space-x-6">
               <Link href="/" className="text-gray-600 hover:text-green-600">
-                Головна
+                {`Головна`}
               </Link>
               <Link href="/about" className="text-gray-600 hover:text-green-600">
-                Про нас
+                {`Про нас`}
               </Link>
               <Link href="/contacts" className="text-green-600 font-medium">
-                Контакти
+                {`Контакти`}
               </Link>
               <Link href="/order" className="text-gray-600 hover:text-green-600">
-                Замовити
+                {`Замовити`}
               </Link>
             </div>
           </div>
@@ -44,16 +44,16 @@ export default function ContactsPage() {
         <Button asChild variant="ghost" className="mb-6">
           <Link href="/">
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Повернутися на головну
+            {`Повернутися на головну`}
           </Link>
         </Button>
 
         {/* Header */}
         <div className="text-center py-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-6">Контакти</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-6">{`Контакти`}</h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Зв'яжіться з нами для отримання консультації або оформлення замовлення. Ми завжди готові допомогти вам
-            підібрати найкращі диски для вашого трактора.
+            {`Зв'яжіться з нами для отримання консультації або оформлення замовлення. Ми завжди готові допомогти вам
+            підібрати найкращі диски для вашого трактора.`}
           </p>
         </div>
 
@@ -64,14 +64,14 @@ export default function ContactsPage() {
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Phone className="w-8 h-8 text-green-600" />
               </div>
-              <CardTitle>Телефон</CardTitle>
+              <CardTitle>{`Телефон`}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-gray-600 mb-2">Менеджер Сергій Костров</p>
+              <p className="text-gray-600 mb-2">{`Менеджер Сергій Костров`}</p>
               <a href="tel:+380686007030" className="text-2xl font-bold text-green-600 hover:text-green-700">
-                068 600 70 30
+                {`068 600 70 30`}
               </a>
-              <p className="text-sm text-gray-500 mt-2">Пн-Пт: 8:00 - 18:00</p>
+              <p className="text-sm text-gray-500 mt-2">{`Пн-Пт: 8:00 - 18:00`}</p>
             </CardContent>
           </Card>
 
@@ -80,11 +80,11 @@ export default function ContactsPage() {
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <MapPin className="w-8 h-8 text-green-600" />
               </div>
-              <CardTitle>Адреса</CardTitle>
+              <CardTitle>{`Адреса`}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-lg font-semibold text-gray-900">м. Київ</p>
-              <p className="text-gray-600 mt-2">Точну адресу офісу та складу уточнюйте по телефону</p>
+              <p className="text-lg font-semibold text-gray-900">{`м. Київ`}</p>
+              <p className="text-gray-600 mt-2">{`Точну адресу офісу та складу уточнюйте по телефону`}</p>
             </CardContent>
           </Card>
 
@@ -93,18 +93,21 @@ export default function ContactsPage() {
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Clock className="w-8 h-8 text-green-600" />
               </div>
-              <CardTitle>Режим роботи</CardTitle>
+              <CardTitle>{`Режим роботи`}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-1 text-gray-600">
                 <p>
-                  <span className="font-medium">Пн-Пт:</span> 8:00 - 18:00
+                  <span className="font-medium">{`Пн-Пт:`}</span>
+                  {` 8:00 - 18:00`}
                 </p>
                 <p>
-                  <span className="font-medium">Сб:</span> 9:00 - 15:00
+                  <span className="font-medium">{`Сб:`}</span>
+                  {` 9:00 - 15:00`}
                 </p>
                 <p>
-                  <span className="font-medium">Нд:</span> Вихідний
+                  <span className="font-medium">{`Нд:`}</span>
+                  {` Вихідний`}
                 </p>
               </div>
             </CardContent>
@@ -115,7 +118,7 @@ export default function ContactsPage() {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Info */}
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Як з нами зв'язатися</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">{`Як з нами зв'язатися`}</h2>
 
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
@@ -123,13 +126,13 @@ export default function ContactsPage() {
                   <Phone className="w-5 h-5 text-green-600" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg mb-1">Телефонна консультація</h3>
+                  <h3 className="font-semibold text-lg mb-1">{`Телефонна консультація`}</h3>
                   <p className="text-gray-600 mb-2">
-                    Зателефонуйте нашому менеджеру Сергію Кострову для отримання детальної консультації щодо вибору
-                    дисків для вашого трактора.
+                    {`Зателефонуйте нашому менеджеру Сергію Кострову для отримання детальної консультації щодо вибору
+                    дисків для вашого трактора.`}
                   </p>
                   <a href="tel:+380686007030" className="text-green-600 font-medium hover:text-green-700">
-                    068 600 70 30
+                    {`068 600 70 30`}
                   </a>
                 </div>
               </div>
@@ -139,12 +142,12 @@ export default function ContactsPage() {
                   <Mail className="w-5 h-5 text-green-600" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg mb-1">Онлайн замовлення</h3>
+                  <h3 className="font-semibold text-lg mb-1">{`Онлайн замовлення`}</h3>
                   <p className="text-gray-600 mb-2">
-                    Скористайтеся нашою системою онлайн замовлення для швидкого та зручного оформлення заявки на диски.
+                    {`Скористайтеся нашою системою онлайн замовлення для швидкого та зручного оформлення заявки на диски.`}
                   </p>
                   <Button asChild variant="outline">
-                    <Link href="/order">Замовити онлайн</Link>
+                    <Link href="/order">{`Замовити онлайн`}</Link>
                   </Button>
                 </div>
               </div>
@@ -154,10 +157,10 @@ export default function ContactsPage() {
                   <MapPin className="w-5 h-5 text-green-600" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg mb-1">Особистий візит</h3>
+                  <h3 className="font-semibold text-lg mb-1">{`Особистий візит`}</h3>
                   <p className="text-gray-600">
-                    Ви можете відвідати наш офіс у Києві для особистої консультації та огляду зразків продукції.
-                    Попередньо зателефонуйте для узгодження зустрічі.
+                    {`Ви можете відвідати наш офіс у Києві для особистої консультації та огляду зразків продукції.
+                    Попередньо зателефонуйте для узгодження зустрічі.`}
                   </p>
                 </div>
               </div>
@@ -166,41 +169,41 @@ export default function ContactsPage() {
 
           {/* Services */}
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Наші послуги</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">{`Наші послуги`}</h2>
 
             <div className="space-y-4">
               <Card>
                 <CardContent className="p-4">
-                  <h3 className="font-semibold mb-2">Консультація з вибору</h3>
+                  <h3 className="font-semibold mb-2">{`Консультація з вибору`}</h3>
                   <p className="text-gray-600 text-sm">
-                    Допоможемо підібрати оптимальні диски для вашої моделі трактора та умов роботи
+                    {`Допоможемо підібрати оптимальні диски для вашої моделі трактора та умов роботи`}
                   </p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardContent className="p-4">
-                  <h3 className="font-semibold mb-2">Індивідуальне виготовлення</h3>
+                  <h3 className="font-semibold mb-2">{`Індивідуальне виготовлення`}</h3>
                   <p className="text-gray-600 text-sm">
-                    Виготовляємо диски за індивідуальними параметрами для нестандартних рішень
+                    {`Виготовляємо диски за індивідуальними параметрами для нестандартних рішень`}
                   </p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardContent className="p-4">
-                  <h3 className="font-semibold mb-2">Доставка по Україні</h3>
+                  <h3 className="font-semibold mb-2">{`Доставка по Україні`}</h3>
                   <p className="text-gray-600 text-sm">
-                    Організовуємо швидку доставку замовлених дисків у будь-який регіон України
+                    {`Організовуємо швидку доставку замовлених дисків у будь-який регіон України`}
                   </p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardContent className="p-4">
-                  <h3 className="font-semibold mb-2">Технічна підтримка</h3>
+                  <h3 className="font-semibold mb-2">{`Технічна підтримка`}</h3>
                   <p className="text-gray-600 text-sm">
-                    Надаємо технічну підтримку з встановлення та експлуатації наших дисків
+                    {`Надаємо технічну підтримку з встановлення та експлуатації наших дисків`}
                   </p>
                 </CardContent>
               </Card>
@@ -210,19 +213,19 @@ export default function ContactsPage() {
 
         {/* CTA Section */}
         <div className="mt-16 text-center bg-green-50 rounded-lg p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Маєте питання? Зв'яжіться з нами!</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">{`Маєте питання? Зв'яжіться з нами!`}</h2>
           <p className="text-gray-600 mb-6">
-            Наш менеджер Сергій Костров з радістю відповість на всі ваші питання та допоможе з вибором дисків
+            {`Наш менеджер Сергій Костров з радістю відповість на всі ваші питання та допоможе з вибором дисків`}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="bg-green-600 hover:bg-green-700">
               <a href="tel:+380686007030">
                 <Phone className="w-4 h-4 mr-2" />
-                Зателефонувати зараз
+                {`Зателефонувати зараз`}
               </a>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <Link href="/order">Замовити онлайн</Link>
+              <Link href="/order">{`Замовити онлайн`}</Link>
             </Button>
           </div>
         </div>

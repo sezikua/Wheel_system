@@ -7,7 +7,7 @@ import { ArrowLeft, Factory, Cog, Shield, Target, Truck } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Про нашу компанію - TractorDiscs",
+  title: `Про нашу компанію - TractorDiscs`,
   description: `Ми - сучасне виробництво систем здвоювання та систем для роботи в міжрядному обробітку. Дізнайтеся більше про нашу історію та переваги.`,
 }
 
@@ -26,16 +26,16 @@ export default function AboutPage() {
             </div>
             <div className="hidden md:flex space-x-6">
               <Link href="/" className="text-gray-600 hover:text-green-600">
-                Головна
+                {`Головна`}
               </Link>
               <Link href="/about" className="text-green-600 font-medium">
-                Про нас
+                {`Про нас`}
               </Link>
               <Link href="/contacts" className="text-gray-600 hover:text-green-600">
-                Контакти
+                {`Контакти`}
               </Link>
               <Link href="/order" className="text-gray-600 hover:text-green-600">
-                Замовити
+                {`Замовити`}
               </Link>
             </div>
           </div>
@@ -46,16 +46,16 @@ export default function AboutPage() {
         <Button asChild variant="ghost" className="mb-6">
           <Link href="/">
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Повернутися на головну
+            {`Повернутися на головну`}
           </Link>
         </Button>
 
         {/* Hero Section */}
         <section className="text-center py-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-6">Про нашу компанію</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-6">{`Про нашу компанію`}</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ми - сучасне виробництво систем здвоювання та систем для роботи в міжрядному обробітку. Наша місія -
-            забезпечити аграріїв України найкращими рішеннями для підвищення ефективності роботи.
+            {`Ми - сучасне виробництво систем здвоювання та систем для роботи в міжрядному обробітку. Наша місія -
+            забезпечити аграріїв України найкращими рішеннями для підвищення ефективності роботи.`}
           </p>
         </section>
 
@@ -63,26 +63,26 @@ export default function AboutPage() {
         <section className="py-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Наша історія</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">{`Наша історія`}</h2>
               <p className="text-gray-600 mb-4">
-                Компанія TractorDiscs була заснована в 2020 році з метою революціонізувати ринок сільськогосподарської
+                {`Компанія TractorDiscs була заснована в 2020 році з метою революціонізувати ринок сільськогосподарської
                 техніки в Україні. Ми почали як невелика команда інженерів та агрономів, які розуміли потреби сучасного
-                фермера.
+                фермера.`}
               </p>
               <p className="text-gray-600 mb-4">
-                За роки роботи ми стали провідним постачальником дисків для тракторів, обслуговуючи понад 500
+                {`За роки роботи ми стали провідним постачальником дисків для тракторів, обслуговуючи понад 500
                 господарств по всій Україні. Наші рішення допомагають фермерам підвищити продуктивність та знизити
-                витрати на обслуговування техніки.
+                витрати на обслуговування техніки.`}
               </p>
               <p className="text-gray-600">
-                Сьогодні ми продовжуємо інновації, розробляючи нові технології та вдосконалюючи існуючі продукти для
-                максимального задоволення потреб наших клієнтів.
+                {`Сьогодні ми продовжуємо інновації, розробляючи нові технології та вдосконалюючи існуючі продукти для
+                максимального задоволення потреб наших клієнтів.`}
               </p>
             </div>
             <div>
               <Image
                 src="/placeholder.svg?height=400&width=600"
-                alt="Наше виробництво"
+                alt={`Наше виробництво`}
                 width={600}
                 height={400}
                 className="rounded-lg shadow-lg"
@@ -95,7 +95,7 @@ export default function AboutPage() {
         <section className="py-12 bg-gray-50 rounded-lg">
           <div className="px-8">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              Чому варто зупинити вибір саме на наших дисках?
+              {`Чому варто зупинити вибір саме на наших дисках?`}
             </h2>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -104,9 +104,9 @@ export default function AboutPage() {
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Factory className="w-8 h-8 text-green-600" />
                   </div>
-                  <h3 className="text-lg font-semibold mb-2">Сучасне виробництво</h3>
+                  <h3 className="text-lg font-semibold mb-2">{`Сучасне виробництво`}</h3>
                   <p className="text-gray-600 text-sm">
-                    Використовуємо найновіші технології та обладнання для виробництва дисків
+                    {`Використовуємо найновіші технології та обладнання для виробництва дисків`}
                   </p>
                 </CardContent>
               </Card>
@@ -116,9 +116,9 @@ export default function AboutPage() {
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Shield className="w-8 h-8 text-green-600" />
                   </div>
-                  <h3 className="text-lg font-semibold mb-2">Гарантія якості</h3>
+                  <h3 className="text-lg font-semibold mb-2">{`Гарантія якості`}</h3>
                   <p className="text-gray-600 text-sm">
-                    Всі наші диски проходять суворий контроль якості та мають гарантію 2 роки
+                    {`Всі наші диски проходять суворий контроль якості та мають гарантію 2 роки`}
                   </p>
                 </CardContent>
               </Card>
@@ -128,9 +128,9 @@ export default function AboutPage() {
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Cog className="w-8 h-8 text-green-600" />
                   </div>
-                  <h3 className="text-lg font-semibold mb-2">Індивідуальні рішення</h3>
+                  <h3 className="text-lg font-semibold mb-2">{`Індивідуальні рішення`}</h3>
                   <p className="text-gray-600 text-sm">
-                    Розробляємо диски під конкретні моделі тракторів та умови експлуатації
+                    {`Розробляємо диски під конкретні моделі тракторів та умови експлуатації`}
                   </p>
                 </CardContent>
               </Card>
@@ -140,9 +140,9 @@ export default function AboutPage() {
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Target className="w-8 h-8 text-green-600" />
                   </div>
-                  <h3 className="text-lg font-semibold mb-2">Точність виготовлення</h3>
+                  <h3 className="text-lg font-semibold mb-2">{`Точність виготовлення`}</h3>
                   <p className="text-gray-600 text-sm">
-                    Кожен диск виготовляється з точністю до міліметра для ідеальної посадки
+                    {`Кожен диск виготовляється з точністю до міліметра для ідеальної посадки`}
                   </p>
                 </CardContent>
               </Card>
@@ -152,7 +152,7 @@ export default function AboutPage() {
 
         {/* Advantages */}
         <section className="py-12">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Переваги наших дисків</h2>
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">{`Переваги наших дисків`}</h2>
 
           <div className="grid lg:grid-cols-2 gap-8">
             <div className="space-y-6">
@@ -161,10 +161,10 @@ export default function AboutPage() {
                   <span className="text-white text-sm font-bold">1</span>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Підвищена міцність</h3>
+                  <h3 className="text-lg font-semibold mb-2">{`Підвищена міцність`}</h3>
                   <p className="text-gray-600">
-                    Використання високоякісної сталі та спеціальних сплавів забезпечує довговічність дисків навіть в
-                    найскладніших умовах експлуатації.
+                    {`Використання високоякісної сталі та спеціальних сплавів забезпечує довговічність дисків навіть в
+                    найскладніших умовах експлуатації.`}
                   </p>
                 </div>
               </div>
@@ -174,10 +174,10 @@ export default function AboutPage() {
                   <span className="text-white text-sm font-bold">2</span>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Оптимальний розподіл ваги</h3>
+                  <h3 className="text-lg font-semibold mb-2">{`Оптимальний розподіл ваги`}</h3>
                   <p className="text-gray-600">
-                    Наші диски забезпечують рівномірний розподіл ваги трактора, що знижує ущільнення ґрунту та покращує
-                    тягові характеристики.
+                    {`Наші диски забезпечують рівномірний розподіл ваги трактора, що знижує ущільнення ґрунту та покращує
+                    тягові характеристики.`}
                   </p>
                 </div>
               </div>
@@ -187,10 +187,10 @@ export default function AboutPage() {
                   <span className="text-white text-sm font-bold">3</span>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Легке встановлення</h3>
+                  <h3 className="text-lg font-semibold mb-2">{`Легке встановлення`}</h3>
                   <p className="text-gray-600">
-                    Продумана конструкція дозволяє швидко та легко встановити диски без спеціального обладнання та
-                    складних налаштувань.
+                    {`Продумана конструкція дозволяє швидко та легко встановити диски без спеціального обладнання та
+                    складних налаштувань.`}
                   </p>
                 </div>
               </div>
@@ -202,10 +202,10 @@ export default function AboutPage() {
                   <span className="text-white text-sm font-bold">4</span>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Економія палива</h3>
+                  <h3 className="text-lg font-semibold mb-2">{`Економія палива`}</h3>
                   <p className="text-gray-600">
-                    Правильно підібрані диски знижують опір кочення та покращують зчеплення, що призводить до економії
-                    палива до 15%.
+                    {`Правильно підібрані диски знижують опір кочення та покращують зчеплення, що призводить до економії
+                    палива до 15%.`}
                   </p>
                 </div>
               </div>
@@ -215,10 +215,10 @@ export default function AboutPage() {
                   <span className="text-white text-sm font-bold">5</span>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Універсальність</h3>
+                  <h3 className="text-lg font-semibold mb-2">{`Універсальність`}</h3>
                   <p className="text-gray-600">
-                    Наші диски підходять для різних типів робіт: оранка, культивація, посів, міжрядний обробіток та
-                    транспортні роботи.
+                    {`Наші диски підходять для різних типів робіт: оранка, культивація, посів, міжрядний обробіток та
+                    транспортні роботи.`}
                   </p>
                 </div>
               </div>
@@ -228,10 +228,10 @@ export default function AboutPage() {
                   <span className="text-white text-sm font-bold">6</span>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Сервісна підтримка</h3>
+                  <h3 className="text-lg font-semibold mb-2">{`Сервісна підтримка`}</h3>
                   <p className="text-gray-600">
-                    Надаємо повну технічну підтримку, консультації з вибору та післяпродажне обслуговування по всій
-                    Україні.
+                    {`Надаємо повну технічну підтримку, консультації з вибору та післяпродажне обслуговування по всій
+                    Україні.`}
                   </p>
                 </div>
               </div>
@@ -241,14 +241,14 @@ export default function AboutPage() {
 
         {/* CTA */}
         <section className="py-12 text-center bg-green-50 rounded-lg">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Готові зробити ваш трактор ще ефективнішим?</h2>
-          <p className="text-gray-600 mb-6">Зв'яжіться з нами для консультації або оформіть замовлення прямо зараз</p>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">{`Готові зробити ваш трактор ще ефективнішим?`}</h2>
+          <p className="text-gray-600 mb-6">{`Зв'яжіться з нами для консультації або оформіть замовлення прямо зараз`}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="bg-green-600 hover:bg-green-700">
-              <Link href="/order">Замовити диски</Link>
+              <Link href="/order">{`Замовити диски`}</Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <Link href="/contacts">Отримати консультацію</Link>
+              <Link href="/contacts">{`Отримати консультацію`}</Link>
             </Button>
           </div>
         </section>

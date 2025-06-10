@@ -27,73 +27,73 @@ export default function ManufacturerPageClient() {
   const manufacturers: Manufacturer[] = [
     {
       id: "john-deere",
-      name: "John Deere",
-      country: "США",
+      name: `John Deere`,
+      country: `США`,
       image: "/images/john-deere.png",
-      description: "Провідний американський виробник сільськогосподарської техніки",
+      description: `Провідний американський виробник сільськогосподарської техніки`,
     },
     {
       id: "case-ih",
-      name: "Case IH",
-      country: "США",
+      name: `Case IH`,
+      country: `США`,
       image: "/images/case-ih.png",
-      description: "Частина CNH Industrial, відомий надійністю та інноваціями",
+      description: `Частина CNH Industrial, відомий надійністю та інноваціями`,
     },
     {
       id: "massey-ferguson",
-      name: "Massey Ferguson",
-      country: "США",
+      name: `Massey Ferguson`,
+      country: `США`,
       image: "/images/massey-ferguson.png",
-      description: "Частина AGCO, один з найстаріших брендів тракторів",
+      description: `Частина AGCO, один з найстаріших брендів тракторів`,
     },
     {
       id: "kubota",
-      name: "Kubota",
-      country: "Японія",
+      name: `Kubota`,
+      country: `Японія`,
       image: "/images/kubota.png",
-      description: "Японська якість та надійність у сільськогосподарській техніці",
+      description: `Японська якість та надійність у сільськогосподарській техніці`,
     },
     {
       id: "new-holland",
-      name: "New Holland",
-      country: "США/Італія",
+      name: `New Holland`,
+      country: `США/Італія`,
       image: "/images/new-holland.png",
-      description: "Частина CNH Industrial, поєднання американських та європейських технологій",
+      description: `Частина CNH Industrial, поєднання американських та європейських технологій`,
     },
     {
       id: "fendt",
-      name: "Fendt",
-      country: "Німеччина",
+      name: `Fendt`,
+      country: `Німеччина`,
       image: "/images/fendt.png",
-      description: "Німецька інженерія та преміум якість",
+      description: `Німецька інженерія та преміум якість`,
     },
     {
       id: "claas",
-      name: "CLAAS",
-      country: "Німеччина",
+      name: `CLAAS`,
+      country: `Німеччина`,
       image: "/images/claas.png",
-      description: "Німецький виробник з багаторічним досвідом",
+      description: `Німецький виробник з багаторічним досвідом`,
     },
     {
       id: "mahindra",
-      name: "Mahindra & Mahindra",
-      country: "Індія",
+      name: `Mahindra & Mahindra`,
+      country: `Індія`,
       image: "/placeholder.svg?height=150&width=200",
-      description: "Індійський виробник доступних та надійних тракторів",
+      description: `Індійський виробник доступних та надійних тракторів`,
     },
     {
       id: "deutz-fahr",
-      name: "Deutz-Fahr",
-      country: "Німеччина",
+      name: `Deutz-Fahr`,
+      country: `Німеччина`,
       image: "/images/deutz-fahr.png",
-      description: "Частина SDF Group, німецькі технології",
+      description: `Частина SDF Group, німецькі технології`,
     },
     {
       id: "landini",
-      name: "Landini",
-      country: "Італія",
+      name: `Landini`,
+      country: `Італія`,
       image: "/images/landini.png",
-      description: "Італійський виробник з багатою історією",
+      description: `Італійський виробник з багатою історією`,
     },
   ]
 
@@ -131,19 +131,19 @@ export default function ManufacturerPageClient() {
               className="hidden md:flex space-x-6"
             >
               <Link href="/" className="text-gray-600 hover:text-green-600 transition-colors relative group">
-                Головна
+                {`Головна`}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link href="/about" className="text-gray-600 hover:text-green-600 transition-colors relative group">
-                Про нас
+                {`Про нас`}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link href="/contacts" className="text-gray-600 hover:text-green-600 transition-colors relative group">
-                Контакти
+                {`Контакти`}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link href="/order" className="text-green-600 font-medium relative group">
-                Замовити
+                {`Замовити`}
                 <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-green-600"></span>
               </Link>
             </motion.div>
@@ -156,7 +156,7 @@ export default function ManufacturerPageClient() {
           <Button asChild variant="ghost" className="mb-6 group">
             <Link href="/order">
               <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-              Повернутися до вибору типу дисків
+              {`Повернутися до вибору типу дисків`}
             </Link>
           </Button>
         </motion.div>
@@ -173,34 +173,34 @@ export default function ManufacturerPageClient() {
               <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-700 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-md">
                 ✓
               </div>
-              <span className="ml-2 text-green-600 font-medium">Тип дисків</span>
+              <span className="ml-2 text-green-600 font-medium">{`Тип дисків`}</span>
             </div>
             <div className="w-8 h-px bg-green-600"></div>
             <div className="flex items-center">
               <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-700 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-md">
                 2
               </div>
-              <span className="ml-2 text-green-600 font-medium">Виробник</span>
+              <span className="ml-2 text-green-600 font-medium">{`Виробник`}</span>
             </div>
             <div className="w-8 h-px bg-gray-300"></div>
             <div className="flex items-center">
               <div className="w-8 h-8 bg-gray-300 text-gray-500 rounded-full flex items-center justify-center text-sm font-bold">
                 3
               </div>
-              <span className="ml-2 text-gray-500">Модель</span>
+              <span className="ml-2 text-gray-500">{`Модель`}</span>
             </div>
             <div className="w-8 h-px bg-gray-300"></div>
             <div className="flex items-center">
               <div className="w-8 h-8 bg-gray-300 text-gray-500 rounded-full flex items-center justify-center text-sm font-bold">
                 4
               </div>
-              <span className="ml-2 text-gray-500">Контакти</span>
+              <span className="ml-2 text-gray-500">{`Контакти`}</span>
             </div>
           </div>
         </motion.div>
 
         {/* Header */}
-        <SectionHeading title="Вибір виробника" subtitle="Крок 2: Оберіть виробника вашого трактора" />
+        <SectionHeading title={`Вибір виробника`} subtitle={`Крок 2: Оберіть виробника вашого трактора`} />
 
         {/* Manufacturer Selection */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
@@ -226,7 +226,7 @@ export default function ManufacturerPageClient() {
                   </motion.div>
                 </div>
                 <CardTitle className="text-lg">{manufacturer.name}</CardTitle>
-                <p className="text-sm text-gray-500">({manufacturer.country})</p>
+                <p className="text-sm text-gray-500">{`(${manufacturer.country})`}</p>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 text-sm text-center">{manufacturer.description}</p>
@@ -237,7 +237,7 @@ export default function ManufacturerPageClient() {
                     className="mt-4 p-2 bg-green-50 rounded-lg"
                   >
                     <p className="text-green-700 text-sm font-medium text-center flex items-center justify-center">
-                      <CheckCircle className="w-4 h-4 mr-1" /> Вибрано
+                      <CheckCircle className="w-4 h-4 mr-1" /> {`Вибрано`}
                     </p>
                   </motion.div>
                 )}
@@ -251,7 +251,7 @@ export default function ManufacturerPageClient() {
                     }}
                     className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 w-full mt-4 group"
                   >
-                    Далі: Вибір серії
+                    {`Далі: Вибір серії`}
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </CardFooter>
@@ -267,10 +267,10 @@ export default function ManufacturerPageClient() {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="mt-12 bg-blue-50 rounded-lg p-6 shadow-md"
         >
-          <h3 className="text-lg font-semibold text-blue-900 mb-2">Не знаєте виробника вашого трактора?</h3>
+          <h3 className="text-lg font-semibold text-blue-900 mb-2">{`Не знаєте виробника вашого трактора?`}</h3>
           <p className="text-blue-700 mb-4">
-            Зв'яжіться з нашим менеджером, і він допоможе визначити виробника та модель за фотографією або серійним
-            номером трактора.
+            {`Зв'яжіться з нашим менеджером, і він допоможе визначити виробника та модель за фотографією або серійним
+            номером трактора.`}
           </p>
           <Button
             asChild
@@ -279,7 +279,7 @@ export default function ManufacturerPageClient() {
           >
             <a href="tel:+380686007030">
               <Phone className="w-4 h-4 mr-2" />
-              Зателефонувати менеджеру
+              {`Зателефонувати менеджеру`}
             </a>
           </Button>
         </motion.div>

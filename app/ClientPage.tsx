@@ -58,20 +58,20 @@ export default function ClientPage() {
               className="hidden md:flex space-x-6"
             >
               <Link href="/" className="text-green-600 font-medium relative group">
-                Головна
+                {`Головна`}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link href="/about" className="text-gray-600 hover:text-green-600 transition-colors relative group">
-                Про нас
+                {`Про нас`}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link href="/contacts" className="text-gray-600 hover:text-green-600 transition-colors relative group">
-                Контакти
+                {`Контакти`}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link href="/order" className="text-gray-600 hover:text-green-600 transition-colors relative group">
-                Замовити
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
+                {`Замовити`}
+                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-green-600"></span>
               </Link>
             </motion.div>
           </div>
@@ -89,7 +89,9 @@ export default function ClientPage() {
                 transition={{ duration: 0.8 }}
                 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight"
               >
-                Інноваційні <span className="text-green-600">диски</span> для вашого трактора
+                {`Інноваційні `}
+                <span className="text-green-600">{`диски`}</span>
+                {` для вашого трактора`}
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -97,8 +99,7 @@ export default function ClientPage() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-xl text-gray-600 mb-8"
               >
-                Сучасне виробництво систем здвоювання та систем для роботи в міжрядному обробітку. Якість, надійність та
-                індивідуальний підхід до кожного клієнта.
+                {`Сучасне виробництво систем здвоювання та систем для роботи в міжрядному обробітку. Якість, надійність та індивідуальний підхід до кожного клієнта.`}
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -112,7 +113,8 @@ export default function ClientPage() {
                   className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 shadow-lg"
                 >
                   <Link href="/order">
-                    Замовити диски <ArrowRight className="ml-2 w-4 h-4" />
+                    {`Замовити диски `}
+                    <ArrowRight className="ml-2 w-4 h-4" />
                   </Link>
                 </Button>
                 <Button
@@ -121,7 +123,7 @@ export default function ClientPage() {
                   size="lg"
                   className="border-green-600 text-green-600 hover:bg-green-50"
                 >
-                  <Link href="/about">Дізнатися більше</Link>
+                  <Link href="/about">{`Дізнатися більше`}</Link>
                 </Button>
               </motion.div>
             </div>
@@ -134,20 +136,20 @@ export default function ClientPage() {
               <div className="relative z-10 rounded-lg overflow-hidden shadow-2xl">
                 <Image
                   src="/images/system-doubling.png"
-                  alt="Трактор з системою здвоювання"
+                  alt={`Трактор з системою здвоювання`}
                   width={600}
                   height={400}
                   className="w-full h-auto"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end">
                   <div className="p-6 text-white">
-                    <h3 className="text-xl font-bold mb-2">Система здвоювання</h3>
-                    <p className="text-sm">Підвищена стабільність та зниження тиску на ґрунт</p>
+                    <h3 className="text-xl font-bold mb-2">{`Система здвоювання`}</h3>
+                    <p className="text-sm">{`Підвищена стабільність та зниження тиску на ґрунт`}</p>
                   </div>
                 </div>
               </div>
               <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-lg z-20 shadow-xl">
-                <span className="animate-pulse">Новинка</span>
+                <span className="animate-pulse">{`Новинка`}</span>
               </div>
             </motion.div>
           </div>
@@ -162,7 +164,7 @@ export default function ClientPage() {
               href="#products"
               className="flex flex-col items-center text-green-600 hover:text-green-700 transition-colors"
             >
-              <span className="mb-2">Дізнатися більше</span>
+              <span className="mb-2">{`Дізнатися більше`}</span>
               <ChevronDown className="w-6 h-6 animate-bounce" />
             </a>
           </motion.div>
@@ -173,27 +175,28 @@ export default function ClientPage() {
       <section id="products" className="py-20 px-4 bg-white">
         <div className="container mx-auto">
           <SectionHeading
-            title="Наші диски в роботі"
-            subtitle="Інноваційні рішення для різних типів сільськогосподарських робіт"
+            title={`Наші диски в роботі`}
+            subtitle={`Інноваційні рішення для різних типів сільськогосподарських робіт`}
           />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <AnimatedCard delay={0.1}>
               <AnimatedImage
                 src="/images/system-doubling.png"
-                alt="Трактор з широкими дисками"
+                alt={`Трактор з широкими дисками`}
                 width={400}
                 height={300}
                 className="mb-4"
               />
-              <h3 className="font-semibold text-lg mb-2">Система здвоювання</h3>
-              <p className="text-gray-600">Широкі диски для максимальної стабільності та зниження тиску на ґрунт</p>
+              <h3 className="font-semibold text-lg mb-2">{`Система здвоювання широкі диски`}</h3>
+              <p className="text-gray-600">{`Для збільшення стабільності та зниження тиску на ґрунт`}</p>
               <motion.div className="mt-4 flex" whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
                 <Link
                   href="/order?type=doubling"
                   className="text-green-600 hover:text-green-700 font-medium flex items-center"
                 >
-                  Замовити <ArrowRight className="ml-1 w-4 h-4" />
+                  {`Замовити `}
+                  <ArrowRight className="ml-1 w-4 h-4" />
                 </Link>
               </motion.div>
             </AnimatedCard>
@@ -201,19 +204,20 @@ export default function ClientPage() {
             <AnimatedCard delay={0.2}>
               <AnimatedImage
                 src="/images/interrow-cultivation.png"
-                alt="Трактор для міжрядного обробітку"
+                alt={`Трактор для міжрядного обробітку`}
                 width={400}
                 height={300}
                 className="mb-4"
               />
-              <h3 className="font-semibold text-lg mb-2">Міжрядний обробіток</h3>
-              <p className="text-gray-600">Вузькі диски для точної роботи між рядами та ефективного обробітку</p>
+              <h3 className="font-semibold text-lg mb-2">{`Міжрядний обробіток`}</h3>
+              <p className="text-gray-600">{`Вузькі диски для точної роботи між рядами та ефективного обробітку`}</p>
               <motion.div className="mt-4 flex" whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
                 <Link
                   href="/order?type=interrow"
                   className="text-green-600 hover:text-green-700 font-medium flex items-center"
                 >
-                  Замовити <ArrowRight className="ml-1 w-4 h-4" />
+                  {`Замовити `}
+                  <ArrowRight className="ml-1 w-4 h-4" />
                 </Link>
               </motion.div>
             </AnimatedCard>
@@ -221,19 +225,20 @@ export default function ClientPage() {
             <AnimatedCard delay={0.3}>
               <AnimatedImage
                 src="/images/custom-solutions.png"
-                alt="Трактор з індивідуальною конфігурацією"
+                alt={`Трактор з індивідуальною конфігурацією`}
                 width={400}
                 height={300}
                 className="mb-4"
               />
-              <h3 className="font-semibold text-lg mb-2">Індивідуальні рішення</h3>
-              <p className="text-gray-600">Диски під ваші специфічні потреби та особливості техніки</p>
+              <h3 className="font-semibold text-lg mb-2">{`Індивідуальні рішення`}</h3>
+              <p className="text-gray-600">{`Диски під ваші специфічні потреби та особливості техніки`}</p>
               <motion.div className="mt-4 flex" whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
                 <Link
                   href="/order?type=custom"
                   className="text-green-600 hover:text-green-700 font-medium flex items-center"
                 >
-                  Замовити <ArrowRight className="ml-1 w-4 h-4" />
+                  {`Замовити `}
+                  <ArrowRight className="ml-1 w-4 h-4" />
                 </Link>
               </motion.div>
             </AnimatedCard>
@@ -245,27 +250,27 @@ export default function ClientPage() {
       <section className="py-20 px-4 bg-gray-50">
         <div className="container mx-auto">
           <SectionHeading
-            title="Чому обирають нас"
-            subtitle="Ми поєднуємо інноваційні технології та багаторічний досвід для створення найкращих рішень"
+            title={`Чому обирають нас`}
+            subtitle={`Ми поєднуємо інноваційні технології та багаторічний досвід для створення найкращих рішень`}
           />
 
           <div className="grid md:grid-cols-3 gap-8">
             <FeatureCard
               icon={Award}
-              title="Висока якість"
-              description="Використовуємо тільки найкращі матеріали та сучасні технології виробництва"
+              title={`Висока якість`}
+              description={`Використовуємо тільки найкращі матеріали та сучасні технології виробництва`}
               delay={0.1}
             />
             <FeatureCard
               icon={Users}
-              title="Індивідуальний підхід"
-              description="Кожне замовлення розглядається індивідуально з урахуванням ваших потреб"
+              title={`Індивідуальний підхід`}
+              description={`Кожне замовлення розглядається індивідуально з урахуванням ваших потреб`}
               delay={0.2}
             />
             <FeatureCard
               icon={Zap}
-              title="Швидка доставка"
-              description="Оперативне виконання замовлень та доставка по всій Україні"
+              title={`Швидка доставка`}
+              description={`Оперативне виконання замовлень та доставка по всій Україні`}
               delay={0.3}
             />
           </div>
@@ -273,20 +278,20 @@ export default function ClientPage() {
           <div className="grid md:grid-cols-3 gap-8 mt-12">
             <FeatureCard
               icon={Shield}
-              title="Гарантія якості"
-              description="Надаємо гарантію на всі наші вироби та забезпечуємо сервісну підтримку"
+              title={`Гарантія якості`}
+              description={`Надаємо гарантію на всі наші вироби та забезпечуємо сервісну підтримку`}
               delay={0.4}
             />
             <FeatureCard
               icon={Settings}
-              title="Технічна підтримка"
-              description="Наші спеціалісти завжди готові надати консультацію та допомогу"
+              title={`Технічна підтримка`}
+              description={`Наші спеціалісти завжди готові надати консультацію та допомогу`}
               delay={0.5}
             />
             <FeatureCard
               icon={CheckCircle}
-              title="Перевірена надійність"
-              description="Сотні задоволених клієнтів по всій Україні підтверджують якість нашої продукції"
+              title={`Перевірена надійність`}
+              description={`Сотні задоволених клієнтів по всій Україні підтверджують якість нашої продукції`}
               delay={0.6}
             />
           </div>
@@ -311,7 +316,7 @@ export default function ClientPage() {
               >
                 500+
               </motion.div>
-              <p className="text-gray-600">Задоволених клієнтів</p>
+              <p className="text-gray-600">{`Задоволених клієнтів`}</p>
             </motion.div>
 
             <motion.div
@@ -328,7 +333,7 @@ export default function ClientPage() {
               >
                 1000+
               </motion.div>
-              <p className="text-gray-600">Виготовлених дисків</p>
+              <p className="text-gray-600">{`Виготовлених дисків`}</p>
             </motion.div>
 
             <motion.div
@@ -345,7 +350,7 @@ export default function ClientPage() {
               >
                 10+
               </motion.div>
-              <p className="text-gray-600">Років досвіду</p>
+              <p className="text-gray-600">{`Років досвіду`}</p>
             </motion.div>
 
             <motion.div
@@ -362,7 +367,7 @@ export default function ClientPage() {
               >
                 24/7
               </motion.div>
-              <p className="text-gray-600">Технічна підтримка</p>
+              <p className="text-gray-600">{`Технічна підтримка`}</p>
             </motion.div>
           </div>
         </div>
@@ -390,11 +395,11 @@ export default function ClientPage() {
             className="text-center"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Готові замовити диски для вашого трактора?
+              {`Готові замовити диски для вашого трактора?`}
             </h2>
             <p className="text-green-100 mb-8 text-lg max-w-2xl mx-auto">
-              Зв'яжіться з нами прямо зараз або оформіть замовлення онлайн. Наші спеціалісти допоможуть підібрати
-              оптимальне рішення для вашої техніки.
+              {`Зв'яжіться з нами прямо зараз або оформіть замовлення онлайн. Наші спеціалісти допоможуть підібрати
+              оптимальне рішення для вашої техніки.`}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <AnimatedButton
@@ -404,7 +409,7 @@ export default function ClientPage() {
                 delay={0.2}
                 className="bg-white text-green-700 hover:bg-gray-100"
               >
-                <Link href="/order">Замовити онлайн</Link>
+                <Link href="/order">{`Замовити онлайн`}</Link>
               </AnimatedButton>
               <AnimatedButton
                 asChild
@@ -413,7 +418,7 @@ export default function ClientPage() {
                 delay={0.3}
                 className="border-white text-white hover:bg-white/10"
               >
-                <Link href="/contacts">Зв'язатися з нами</Link>
+                <Link href="/contacts">{`Зв'язатися з нами`}</Link>
               </AnimatedButton>
             </div>
           </motion.div>
@@ -431,7 +436,7 @@ export default function ClientPage() {
                 </div>
                 <span className="text-lg font-bold">TractorDiscs</span>
               </div>
-              <p className="text-gray-400 mb-4">Професійні диски для тракторів. Якість та надійність з 2020 року.</p>
+              <p className="text-gray-400 mb-4">{`Професійні диски для тракторів. Якість та надійність з 2020 року.`}</p>
               <div className="flex space-x-4">
                 <a
                   href="#"
@@ -469,56 +474,56 @@ export default function ClientPage() {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold mb-4">Навігація</h3>
+              <h3 className="text-lg font-semibold mb-4">{`Навігація`}</h3>
               <ul className="space-y-2">
                 <li>
                   <Link href="/" className="text-gray-400 hover:text-white transition-colors">
-                    Головна
+                    {`Головна`}
                   </Link>
                 </li>
                 <li>
                   <Link href="/about" className="text-gray-400 hover:text-white transition-colors">
-                    Про нас
+                    {`Про нас`}
                   </Link>
                 </li>
                 <li>
                   <Link href="/contacts" className="text-gray-400 hover:text-white transition-colors">
-                    Контакти
+                    {`Контакти`}
                   </Link>
                 </li>
                 <li>
                   <Link href="/order" className="text-gray-400 hover:text-white transition-colors">
-                    Замовити
+                    {`Замовити`}
                   </Link>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold mb-4">Контакти</h3>
+              <h3 className="text-lg font-semibold mb-4">{`Контакти`}</h3>
               <ul className="space-y-2">
                 <li className="flex items-start">
                   <Phone className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                   <a href="tel:+380686007030" className="text-gray-400 hover:text-white transition-colors">
-                    068 600 70 30
+                    {`068 600 70 30`}
                   </a>
                 </li>
                 <li className="flex items-start">
                   <Mail className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                   <a href="mailto:info@tractordiscs.com" className="text-gray-400 hover:text-white transition-colors">
-                    info@tractordiscs.com
+                    {`info@tractordiscs.com`}
                   </a>
                 </li>
                 <li className="flex items-start">
                   <MapPin className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-400">м. Київ, Україна</span>
+                  <span className="text-gray-400">{`м. Київ, Україна`}</span>
                 </li>
               </ul>
             </div>
           </div>
 
           <div className="border-t border-gray-800 pt-8 mt-8 text-center">
-            <p className="text-gray-400">© {new Date().getFullYear()} TractorDiscs. Всі права захищені.</p>
+            <p className="text-gray-400">{`© ${new Date().getFullYear()} TractorDiscs. Всі права захищені.`}</p>
           </div>
         </div>
       </footer>

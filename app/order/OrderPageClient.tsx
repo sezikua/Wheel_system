@@ -12,36 +12,34 @@ import { SectionHeading } from "@/components/ui/section-heading"
 type DiscType = "doubling" | "interrow" | "custom"
 
 export default function OrderPageClient() {
-  \
-  const [selectedType, setSelectedType] = (useState < DiscType) | null
-  )
+  const [selectedType, setSelectedType] = useState<DiscType | null>(null)
 
   const discTypes = [
     {
       id: "doubling" as DiscType,
-      title: "Система здвоювання широкі диски",
-      description: "Для збільшення стабільності та зниження тиску на ґрунт",
+      title: `Система здвоювання широкі диски`,
+      description: `Для збільшення стабільності та зниження тиску на ґрунт`,
       image: "/images/system-doubling.png",
-      options: ["Передні + задні", "Задні", "Свій варіант (користувач прописує сам)"],
+      options: [`Передні + задні`, `Задні`, `Свій варіант (користувач прописує сам)`],
     },
     {
       id: "interrow" as DiscType,
-      title: "Для роботи в міжрядді",
-      description: "Вузькі диски для точного міжрядного обробітку",
+      title: `Для роботи в міжрядді`,
+      description: `Вузькі диски для точного міжрядного обробітку`,
       image: "/images/interrow-cultivation.png",
       options: [
-        "Передні + задні",
-        "Здвоєні задні + одинарні передні",
-        "Здвоєні передні + здвоєні задні",
-        "Свій варіант (користувач прописує сам)",
+        `Передні + задні`,
+        `Здвоєні задні + одинарні передні`,
+        `Здвоєні передні + здвоєні задні`,
+        `Свій варіант (користувач прописує сам)`,
       ],
     },
     {
       id: "custom" as DiscType,
-      title: "Свій варіант",
-      description: "Індивідуальне рішення під ваші потреби",
+      title: `Свій варіант`,
+      description: `Індивідуальне рішення під ваші потреби`,
       image: "/images/custom-solutions.png",
-      options: ["Свій варіант (користувач прописує сам)"],
+      options: [`Свій варіант (користувач прописує сам)`],
     },
   ]
 
@@ -78,19 +76,19 @@ export default function OrderPageClient() {
               className="hidden md:flex space-x-6"
             >
               <Link href="/" className="text-gray-600 hover:text-green-600 transition-colors relative group">
-                Головна
+                {`Головна`}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link href="/about" className="text-gray-600 hover:text-green-600 transition-colors relative group">
-                Про нас
+                {`Про нас`}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link href="/contacts" className="text-gray-600 hover:text-green-600 transition-colors relative group">
-                Контакти
+                {`Контакти`}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link href="/order" className="text-green-600 font-medium relative group">
-                Замовити
+                {`Замовити`}
                 <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-green-600"></span>
               </Link>
             </motion.div>
@@ -103,7 +101,7 @@ export default function OrderPageClient() {
           <Button asChild variant="ghost" className="mb-6 group">
             <Link href="/">
               <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-              Повернутися на головну
+              {`Повернутися на головну`}
             </Link>
           </Button>
         </motion.div>
@@ -120,34 +118,34 @@ export default function OrderPageClient() {
               <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-700 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-md">
                 1
               </div>
-              <span className="ml-2 text-green-600 font-medium">Тип дисків</span>
+              <span className="ml-2 text-green-600 font-medium">{`Тип дисків`}</span>
             </div>
             <div className="w-8 h-px bg-gray-300"></div>
             <div className="flex items-center">
               <div className="w-8 h-8 bg-gray-300 text-gray-500 rounded-full flex items-center justify-center text-sm font-bold">
                 2
               </div>
-              <span className="ml-2 text-gray-500">Виробник</span>
+              <span className="ml-2 text-gray-500">{`Виробник`}</span>
             </div>
             <div className="w-8 h-px bg-gray-300"></div>
             <div className="flex items-center">
               <div className="w-8 h-8 bg-gray-300 text-gray-500 rounded-full flex items-center justify-center text-sm font-bold">
                 3
               </div>
-              <span className="ml-2 text-gray-500">Модель</span>
+              <span className="ml-2 text-gray-500">{`Модель`}</span>
             </div>
             <div className="w-8 h-px bg-gray-300"></div>
             <div className="flex items-center">
               <div className="w-8 h-8 bg-gray-300 text-gray-500 rounded-full flex items-center justify-center text-sm font-bold">
                 4
               </div>
-              <span className="ml-2 text-gray-500">Контакти</span>
+              <span className="ml-2 text-gray-500">{`Контакти`}</span>
             </div>
           </div>
         </motion.div>
 
         {/* Header */}
-        <SectionHeading title="Замовлення дисків" subtitle="Крок 1: Виберіть для чого потрібні диски" />
+        <SectionHeading title={`Замовлення дисків`} subtitle={`Крок 1: Виберіть для чого потрібні диски`} />
 
         {/* Disc Type Selection */}
         <div className="grid md:grid-cols-3 gap-8 mb-12">
@@ -174,7 +172,7 @@ export default function OrderPageClient() {
               <h3 className="text-lg font-semibold mb-2">{type.title}</h3>
               <p className="text-gray-600 mb-4">{type.description}</p>
               <div className="space-y-2">
-                <p className="font-medium text-sm text-gray-700">Варіанти:</p>
+                <p className="font-medium text-sm text-gray-700">{`Варіанти:`}</p>
                 <ul className="text-sm text-gray-600 space-y-1">
                   {type.options.map((option, index) => (
                     <li key={index} className="flex items-center">
@@ -191,7 +189,7 @@ export default function OrderPageClient() {
                   className="mt-4 p-2 bg-green-50 rounded-lg"
                 >
                   <p className="text-green-700 text-sm font-medium flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-1" /> Вибрано
+                    <CheckCircle className="w-4 h-4 mr-1" /> {`Вибрано`}
                   </p>
                 </motion.div>
               )}
@@ -209,7 +207,7 @@ export default function OrderPageClient() {
           <Button asChild variant="outline" className="group">
             <Link href="/">
               <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-              Назад
+              {`Назад`}
             </Link>
           </Button>
 
@@ -218,7 +216,7 @@ export default function OrderPageClient() {
             disabled={!selectedType}
             className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 group"
           >
-            Далі: Вибір виробника
+            {`Далі: Вибір виробника`}
             <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
         </motion.div>
@@ -230,10 +228,10 @@ export default function OrderPageClient() {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="mt-12 bg-blue-50 rounded-lg p-6 shadow-md"
         >
-          <h3 className="text-lg font-semibold text-blue-900 mb-2">Потрібна допомога з вибором?</h3>
+          <h3 className="text-lg font-semibold text-blue-900 mb-2">{`Потрібна допомога з вибором?`}</h3>
           <p className="text-blue-700 mb-4">
-            Якщо ви не впевнені, який тип дисків вам потрібен, зв'яжіться з нашим менеджером для отримання безкоштовної
-            консультації.
+            {`Якщо ви не впевнені, який тип дисків вам потрібен, зв'яжіться з нашим менеджером для отримання безкоштовної
+            консультації.`}
           </p>
           <Button
             asChild
@@ -242,7 +240,7 @@ export default function OrderPageClient() {
           >
             <a href="tel:+380686007030">
               <Phone className="w-4 h-4 mr-2" />
-              Зателефонувати менеджеру
+              {`Зателефонувати менеджеру`}
             </a>
           </Button>
         </motion.div>

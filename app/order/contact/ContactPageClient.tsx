@@ -60,25 +60,25 @@ export default function ContactPageClient() {
 
   const getDiscTypeText = (type: string | null) => {
     const types: { [key: string]: string } = {
-      doubling: "Система здвоювання широкі диски",
-      interrow: "Для роботи в міжрядді",
-      custom: "Свій варіант",
+      doubling: `Система здвоювання широкі диски`,
+      interrow: `Для роботи в міжрядді`,
+      custom: `Свій варіант`,
     }
     return types[type || ""] || type
   }
 
   const getManufacturerName = (id: string | null) => {
     const names: { [key: string]: string } = {
-      "john-deere": "John Deere",
-      "case-ih": "Case IH",
-      "massey-ferguson": "Massey Ferguson",
-      kubota: "Kubota",
-      "new-holland": "New Holland",
-      fendt: "Fendt",
-      claas: "CLAAS",
-      mahindra: "Mahindra & Mahindra",
-      "deutz-fahr": "Deutz-Fahr",
-      landini: "Landini",
+      "john-deere": `John Deere`,
+      "case-ih": `Case IH`,
+      "massey-ferguson": `Massey Ferguson`,
+      kubota: `Kubota`,
+      "new-holland": `New Holland`,
+      fendt: `Fendt`,
+      claas: `CLAAS`,
+      mahindra: `Mahindra & Mahindra`,
+      "deutz-fahr": `Deutz-Fahr`,
+      landini: `Landini`,
     }
     return names[id || ""] || id
   }
@@ -110,19 +110,19 @@ export default function ContactPageClient() {
                 className="hidden md:flex space-x-6"
               >
                 <Link href="/" className="text-gray-600 hover:text-green-600 transition-colors relative group">
-                  Головна
+                  {`Головна`}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
                 </Link>
                 <Link href="/about" className="text-gray-600 hover:text-green-600 transition-colors relative group">
-                  Про нас
+                  {`Про нас`}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
                 </Link>
                 <Link href="/contacts" className="text-gray-600 hover:text-green-600 transition-colors relative group">
-                  Контакти
+                  {`Контакти`}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
                 </Link>
                 <Link href="/order" className="text-green-600 font-medium relative group">
-                  Замовити
+                  {`Замовити`}
                   <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-green-600"></span>
                 </Link>
               </motion.div>
@@ -140,30 +140,30 @@ export default function ContactPageClient() {
             <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-700 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
               <CheckCircle className="w-10 h-10 text-white" />
             </div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">Замовлення успішно відправлено!</h1>
+            <h1 className="text-3xl font-bold text-gray-900 mb-4">{`Замовлення успішно відправлено!`}</h1>
             <p className="text-lg text-gray-600 mb-8">
-              Дякуємо за ваше замовлення. Наш менеджер Сергій Костров зв'яжеться з вами найближчим часом для уточнення
-              деталей та розрахунку вартості.
+              {`Дякуємо за ваше замовлення. Наш менеджер Сергій Костров зв'яжеться з вами найближчим часом для уточнення
+              деталей та розрахунку вартості.`}
             </p>
 
             <div className="bg-green-50 rounded-lg p-6 mb-8 shadow-md">
-              <h3 className="text-lg font-semibold text-green-900 mb-2">Що далі?</h3>
+              <h3 className="text-lg font-semibold text-green-900 mb-2">{`Що далі?`}</h3>
               <ul className="text-green-700 space-y-2 text-left">
                 <li className="flex items-start">
                   <span className="w-1.5 h-1.5 bg-green-600 rounded-full mr-3 mt-2"></span>
-                  Менеджер зателефонує вам протягом робочого дня
+                  {`Менеджер зателефонує вам протягом робочого дня`}
                 </li>
                 <li className="flex items-start">
                   <span className="w-1.5 h-1.5 bg-green-600 rounded-full mr-3 mt-2"></span>
-                  Разом уточнимо всі деталі замовлення
+                  {`Разом уточнимо всі деталі замовлення`}
                 </li>
                 <li className="flex items-start">
                   <span className="w-1.5 h-1.5 bg-green-600 rounded-full mr-3 mt-2"></span>
-                  Розрахуємо точну вартість та терміни виготовлення
+                  {`Розрахуємо точну вартість та терміни виготовлення`}
                 </li>
                 <li className="flex items-start">
                   <span className="w-1.5 h-1.5 bg-green-600 rounded-full mr-3 mt-2"></span>
-                  Організуємо доставку в зручний для вас час
+                  {`Організуємо доставку в зручний для вас час`}
                 </li>
               </ul>
             </div>
@@ -174,12 +174,12 @@ export default function ContactPageClient() {
                 size="lg"
                 className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800"
               >
-                <Link href="/">Повернутися на головну</Link>
+                <Link href="/">{`Повернутися на головну`}</Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="border-green-600 text-green-600 hover:bg-green-50">
                 <a href="tel:+380686007030">
                   <Phone className="w-4 h-4 mr-2" />
-                  Зателефонувати менеджеру
+                  {`Зателефонувати менеджеру`}
                 </a>
               </Button>
             </div>
@@ -215,19 +215,19 @@ export default function ContactPageClient() {
               className="hidden md:flex space-x-6"
             >
               <Link href="/" className="text-gray-600 hover:text-green-600 transition-colors relative group">
-                Головна
+                {`Головна`}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link href="/about" className="text-gray-600 hover:text-green-600 transition-colors relative group">
-                Про нас
+                {`Про нас`}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link href="/contacts" className="text-gray-600 hover:text-green-600 transition-colors relative group">
-                Контакти
+                {`Контакти`}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
               <Link href="/order" className="text-green-600 font-medium relative group">
-                Замовити
+                {`Замовити`}
                 <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-green-600"></span>
               </Link>
             </motion.div>
@@ -248,28 +248,28 @@ export default function ContactPageClient() {
               <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-700 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-md">
                 ✓
               </div>
-              <span className="ml-2 text-green-600 font-medium">Тип дисків</span>
+              <span className="ml-2 text-green-600 font-medium">{`Тип дисків`}</span>
             </div>
             <div className="w-8 h-px bg-green-600"></div>
             <div className="flex items-center">
               <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-700 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-md">
                 ✓
               </div>
-              <span className="ml-2 text-green-600 font-medium">Виробник</span>
+              <span className="ml-2 text-green-600 font-medium">{`Виробник`}</span>
             </div>
             <div className="w-8 h-px bg-green-600"></div>
             <div className="flex items-center">
               <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-700 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-md">
                 ✓
               </div>
-              <span className="ml-2 text-green-600 font-medium">Модель</span>
+              <span className="ml-2 text-green-600 font-medium">{`Модель`}</span>
             </div>
             <div className="w-8 h-px bg-green-600"></div>
             <div className="flex items-center">
               <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-700 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-md">
                 4
               </div>
-              <span className="ml-2 text-green-600 font-medium">Контакти</span>
+              <span className="ml-2 text-green-600 font-medium">{`Контакти`}</span>
             </div>
           </div>
         </motion.div>
@@ -277,7 +277,7 @@ export default function ContactPageClient() {
         {!showReview ? (
           <>
             {/* Header */}
-            <SectionHeading title="Контактні дані" subtitle="Крок 4: Залишіть свої контактні дані для зв'язку" />
+            <SectionHeading title={`Контактні дані`} subtitle={`Крок 4: Залишіть свої контактні дані для зв'язку`} />
 
             <div className="max-w-2xl mx-auto">
               {/* Contact Form */}
@@ -288,13 +288,14 @@ export default function ContactPageClient() {
               >
                 <Card className="shadow-lg border-none bg-white/90 backdrop-blur-sm">
                   <CardHeader>
-                    <CardTitle>Ваші контактні дані</CardTitle>
+                    <CardTitle>{`Ваші контактні дані`}</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="name">
-                          Ім'я та прізвище <span className="text-red-500">*</span>
+                          {`Ім'я та прізвище `}
+                          <span className="text-red-500">{`*`}</span>
                         </Label>
                         <div className="relative">
                           <User className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
@@ -302,7 +303,7 @@ export default function ContactPageClient() {
                             id="name"
                             name="name"
                             type="text"
-                            placeholder="Введіть ваше ім'я"
+                            placeholder={`Введіть ваше ім'я`}
                             value={formData.name}
                             onChange={handleInputChange}
                             className="pl-10"
@@ -313,7 +314,8 @@ export default function ContactPageClient() {
 
                       <div className="space-y-2">
                         <Label htmlFor="phone">
-                          Номер телефону <span className="text-red-500">*</span>
+                          {`Номер телефону `}
+                          <span className="text-red-500">{`*`}</span>
                         </Label>
                         <div className="relative">
                           <Phone className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
@@ -321,7 +323,7 @@ export default function ContactPageClient() {
                             id="phone"
                             name="phone"
                             type="tel"
-                            placeholder="+380 XX XXX XX XX"
+                            placeholder={`+380 XX XXX XX XX`}
                             value={formData.phone}
                             onChange={handleInputChange}
                             className="pl-10"
@@ -332,14 +334,14 @@ export default function ContactPageClient() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email (необов'язково)</Label>
+                      <Label htmlFor="email">{`Email (необов'язково)`}</Label>
                       <div className="relative">
                         <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                         <Input
                           id="email"
                           name="email"
                           type="email"
-                          placeholder="your@email.com"
+                          placeholder={`your@email.com`}
                           value={formData.email}
                           onChange={handleInputChange}
                           className="pl-10"
@@ -348,13 +350,13 @@ export default function ContactPageClient() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="comment">Коментар (необов'язково)</Label>
+                      <Label htmlFor="comment">{`Коментар (необов'язково)`}</Label>
                       <div className="relative">
                         <MessageSquare className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                         <Textarea
                           id="comment"
                           name="comment"
-                          placeholder="Додаткові побажання, уточнення щодо моделі трактора, терміни виконання тощо..."
+                          placeholder={`Додаткові побажання, уточнення щодо моделі трактора, терміни виконання тощо...`}
                           value={formData.comment}
                           onChange={handleInputChange}
                           className="pl-10 min-h-[100px]"
@@ -364,7 +366,8 @@ export default function ContactPageClient() {
 
                     <div className="bg-gray-50 rounded-lg p-4">
                       <p className="text-sm text-gray-600">
-                        <span className="text-red-500">*</span> - обов'язкові поля для заповнення
+                        <span className="text-red-500">{`*`}</span>
+                        {` - обов'язкові поля для заповнення`}
                       </p>
                     </div>
                   </CardContent>
@@ -376,8 +379,8 @@ export default function ContactPageClient() {
           <>
             {/* Order Review */}
             <SectionHeading
-              title="Перегляд замовлення"
-              subtitle="Перевірте правильність введених даних перед відправкою"
+              title={`Перегляд замовлення`}
+              subtitle={`Перевірте правильність введених даних перед відправкою`}
             />
 
             <div className="max-w-2xl mx-auto space-y-6">
@@ -389,25 +392,25 @@ export default function ContactPageClient() {
               >
                 <Card className="shadow-lg border-none bg-white/90 backdrop-blur-sm">
                   <CardHeader>
-                    <CardTitle>Деталі замовлення</CardTitle>
+                    <CardTitle>{`Деталі замовлення`}</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <p className="text-sm text-gray-600">Тип дисків:</p>
+                        <p className="text-sm text-gray-600">{`Тип дисків:`}</p>
                         <p className="font-medium">{getDiscTypeText(discType)}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600">Виробник:</p>
+                        <p className="text-sm text-gray-600">{`Виробник:`}</p>
                         <p className="font-medium">{getManufacturerName(manufacturer)}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600">Серія:</p>
+                        <p className="text-sm text-gray-600">{`Серія:`}</p>
                         <p className="font-medium">{series}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600">Модель:</p>
-                        <p className="font-medium">{model === "custom" ? "Свій варіант" : model}</p>
+                        <p className="text-sm text-gray-600">{`Модель:`}</p>
+                        <p className="font-medium">{model === "custom" ? `Свій варіант` : model}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -422,28 +425,28 @@ export default function ContactPageClient() {
               >
                 <Card className="shadow-lg border-none bg-white/90 backdrop-blur-sm">
                   <CardHeader>
-                    <CardTitle>Контактні дані</CardTitle>
+                    <CardTitle>{`Контактні дані`}</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <p className="text-sm text-gray-600">Ім'я:</p>
+                        <p className="text-sm text-gray-600">{`Ім'я:`}</p>
                         <p className="font-medium">{formData.name}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600">Телефон:</p>
+                        <p className="text-sm text-gray-600">{`Телефон:`}</p>
                         <p className="font-medium">{formData.phone}</p>
                       </div>
                     </div>
                     {formData.email && (
                       <div>
-                        <p className="text-sm text-gray-600">Email:</p>
+                        <p className="text-sm text-gray-600">{`Email:`}</p>
                         <p className="font-medium">{formData.email}</p>
                       </div>
                     )}
                     {formData.comment && (
                       <div>
-                        <p className="text-sm text-gray-600">Коментар:</p>
+                        <p className="text-sm text-gray-600">{`Коментар:`}</p>
                         <p className="font-medium">{formData.comment}</p>
                       </div>
                     )}
@@ -460,24 +463,24 @@ export default function ContactPageClient() {
                 <Card className="bg-green-50 shadow-lg border-none">
                   <CardContent className="p-6">
                     <h3 className="text-lg font-semibold text-green-900 mb-3">
-                      Що відбудеться після відправки замовлення:
+                      {`Що відбудеться після відправки замовлення:`}
                     </h3>
                     <ul className="text-green-700 space-y-2">
                       <li className="flex items-start">
                         <span className="w-1.5 h-1.5 bg-green-600 rounded-full mr-3 mt-2"></span>
-                        Менеджер Сергій Костров зв'яжеться з вами протягом робочого дня
+                        {`Менеджер Сергій Костров зв'яжеться з вами протягом робочого дня`}
                       </li>
                       <li className="flex items-start">
                         <span className="w-1.5 h-1.5 bg-green-600 rounded-full mr-3 mt-2"></span>
-                        Разом уточнимо всі технічні деталі та параметри дисків
+                        {`Разом уточнимо всі технічні деталі та параметри дисків`}
                       </li>
                       <li className="flex items-start">
                         <span className="w-1.5 h-1.5 bg-green-600 rounded-full mr-3 mt-2"></span>
-                        Розрахуємо точну вартість та терміни виготовлення
+                        {`Розрахуємо точну вартість та терміни виготовлення`}
                       </li>
                       <li className="flex items-start">
                         <span className="w-1.5 h-1.5 bg-green-600 rounded-full mr-3 mt-2"></span>
-                        Організуємо доставку в зручний для вас час
+                        {`Організуємо доставку в зручний для вас час`}
                       </li>
                     </ul>
                   </CardContent>
@@ -496,7 +499,7 @@ export default function ContactPageClient() {
         >
           <Button onClick={handleBack} variant="outline" className="group">
             <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-            {showReview ? "Редагувати дані" : "Назад"}
+            {showReview ? `Редагувати дані` : `Назад`}
           </Button>
 
           {!showReview ? (
@@ -505,14 +508,14 @@ export default function ContactPageClient() {
               disabled={!formData.name || !formData.phone}
               className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800"
             >
-              Переглянути замовлення
+              {`Переглянути замовлення`}
             </Button>
           ) : (
             <Button
               onClick={handleSubmit}
               className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800"
             >
-              Відправити замовлення
+              {`Відправити замовлення`}
             </Button>
           )}
         </motion.div>
@@ -524,9 +527,9 @@ export default function ContactPageClient() {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="mt-12 bg-blue-50 rounded-lg p-6 max-w-2xl mx-auto shadow-md"
         >
-          <h3 className="text-lg font-semibold text-blue-900 mb-2">Маєте питання?</h3>
+          <h3 className="text-lg font-semibold text-blue-900 mb-2">{`Маєте питання?`}</h3>
           <p className="text-blue-700 mb-4">
-            Якщо у вас виникли питання або потрібна консультація, зв'яжіться з нашим менеджером.
+            {`Якщо у вас виникли питання або потрібна консультація, зв'яжіться з нашим менеджером.`}
           </p>
           <Button
             asChild
@@ -535,7 +538,7 @@ export default function ContactPageClient() {
           >
             <a href="tel:+380686007030">
               <Phone className="w-4 h-4 mr-2" />
-              Зателефонувати Сергію Кострову
+              {`Зателефонувати Сергію Кострову`}
             </a>
           </Button>
         </motion.div>
