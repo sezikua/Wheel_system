@@ -5,8 +5,11 @@ import { useSearchParams } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
-import { ArrowLeft, ArrowRight, Truck } from "lucide-react"
+import { CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
+import { ArrowLeft, ArrowRight, Truck, CheckCircle, Phone } from "lucide-react"
+import { motion } from "framer-motion"
+import { AnimatedCard } from "@/components/ui/animated-card"
+import { SectionHeading } from "@/components/ui/section-heading"
 
 type Manufacturer = {
   id: string
@@ -26,49 +29,49 @@ export default function ManufacturerPage() {
       id: "john-deere",
       name: "John Deere",
       country: "США",
-      image: "/placeholder.svg?height=150&width=200",
+      image: "/images/john-deere.png",
       description: "Провідний американський виробник сільськогосподарської техніки",
     },
     {
       id: "case-ih",
       name: "Case IH",
       country: "США",
-      image: "/placeholder.svg?height=150&width=200",
+      image: "/images/case-ih.png",
       description: "Частина CNH Industrial, відомий надійністю та інноваціями",
     },
     {
       id: "massey-ferguson",
       name: "Massey Ferguson",
       country: "США",
-      image: "/placeholder.svg?height=150&width=200",
+      image: "/images/massey-ferguson.png",
       description: "Частина AGCO, один з найстаріших брендів тракторів",
     },
     {
       id: "kubota",
       name: "Kubota",
       country: "Японія",
-      image: "/placeholder.svg?height=150&width=200",
+      image: "/images/kubota.png",
       description: "Японська якість та надійність у сільськогосподарській техніці",
     },
     {
       id: "new-holland",
       name: "New Holland",
       country: "США/Італія",
-      image: "/placeholder.svg?height=150&width=200",
+      image: "/images/new-holland.png",
       description: "Частина CNH Industrial, поєднання американських та європейських технологій",
     },
     {
       id: "fendt",
       name: "Fendt",
       country: "Німеччина",
-      image: "/placeholder.svg?height=150&width=200",
+      image: "/images/fendt.png",
       description: "Німецька інженерія та преміум якість",
     },
     {
       id: "claas",
       name: "CLAAS",
       country: "Німеччина",
-      image: "/placeholder.svg?height=150&width=200",
+      image: "/images/claas.png",
       description: "Німецький виробник з багаторічним досвідом",
     },
     {
@@ -82,14 +85,14 @@ export default function ManufacturerPage() {
       id: "deutz-fahr",
       name: "Deutz-Fahr",
       country: "Німеччина",
-      image: "/placeholder.svg?height=150&width=200",
+      image: "/images/deutz-fahr.png",
       description: "Частина SDF Group, німецькі технології",
     },
     {
       id: "landini",
       name: "Landini",
       country: "Італія",
-      image: "/placeholder.svg?height=150&width=200",
+      image: "/images/landini.png",
       description: "Італійський виробник з багатою історією",
     },
   ]
@@ -105,53 +108,76 @@ export default function ManufacturerPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="bg-white shadow-sm border-b">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-sm border-b">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="flex items-center space-x-2"
+            >
+              <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-green-700 rounded-lg flex items-center justify-center shadow-md">
                 <Truck className="w-6 h-6 text-white" />
               </div>
-              <span className="text-xl font-bold text-gray-900">TractorDiscs</span>
-            </div>
-            <div className="hidden md:flex space-x-6">
-              <Link href="/" className="text-gray-600 hover:text-green-600">
+              <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-green-800">
+                TractorDiscs
+              </span>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="hidden md:flex space-x-6"
+            >
+              <Link href="/" className="text-gray-600 hover:text-green-600 transition-colors relative group">
                 Головна
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
-              <Link href="/about" className="text-gray-600 hover:text-green-600">
+              <Link href="/about" className="text-gray-600 hover:text-green-600 transition-colors relative group">
                 Про нас
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
-              <Link href="/contacts" className="text-gray-600 hover:text-green-600">
+              <Link href="/contacts" className="text-gray-600 hover:text-green-600 transition-colors relative group">
                 Контакти
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
-              <Link href="/order" className="text-green-600 font-medium">
+              <Link href="/order" className="text-green-600 font-medium relative group">
                 Замовити
+                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-green-600"></span>
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
       </nav>
 
-      <div className="container mx-auto px-4 py-8">
-        <Button asChild variant="ghost" className="mb-6">
-          <Link href="/order">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Повернутися до вибору типу дисків
-          </Link>
-        </Button>
+      <div className="container mx-auto px-4 py-8 pt-24">
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+          <Button asChild variant="ghost" className="mb-6 group">
+            <Link href="/order">
+              <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+              Повернутися до вибору типу дисків
+            </Link>
+          </Button>
+        </motion.div>
 
         {/* Progress Indicator */}
-        <div className="mb-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mb-8"
+        >
           <div className="flex items-center justify-center space-x-4">
             <div className="flex items-center">
-              <div className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+              <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-700 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-md">
                 ✓
               </div>
               <span className="ml-2 text-green-600 font-medium">Тип дисків</span>
             </div>
             <div className="w-8 h-px bg-green-600"></div>
             <div className="flex items-center">
-              <div className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+              <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-700 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-md">
                 2
               </div>
               <span className="ml-2 text-green-600 font-medium">Виробник</span>
@@ -171,33 +197,33 @@ export default function ManufacturerPage() {
               <span className="ml-2 text-gray-500">Контакти</span>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Header */}
-        <div className="text-center py-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">Вибір виробника</h1>
-          <p className="text-lg text-gray-600">Крок 2: Оберіть виробника вашого трактора</p>
-        </div>
+        <SectionHeading title="Вибір виробника" subtitle="Крок 2: Оберіть виробника вашого трактора" />
 
         {/* Manufacturer Selection */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
-          {manufacturers.map((manufacturer) => (
-            <Card
+          {manufacturers.map((manufacturer, index) => (
+            <AnimatedCard
               key={manufacturer.id}
-              className={`cursor-pointer transition-all hover:shadow-lg ${
+              delay={0.1 * (index + 1)}
+              className={`cursor-pointer transition-all ${
                 selectedManufacturer === manufacturer.id ? "ring-2 ring-green-600 shadow-lg" : "hover:shadow-md"
               }`}
               onClick={() => setSelectedManufacturer(manufacturer.id)}
             >
               <CardHeader className="text-center">
                 <div className="aspect-[4/3] mb-4 overflow-hidden rounded-lg bg-gray-50 flex items-center justify-center">
-                  <Image
-                    src={manufacturer.image || "/placeholder.svg"}
-                    alt={manufacturer.name}
-                    width={200}
-                    height={150}
-                    className="w-full h-full object-contain p-4"
-                  />
+                  <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
+                    <Image
+                      src={manufacturer.image || "/placeholder.svg"}
+                      alt={manufacturer.name}
+                      width={200}
+                      height={150}
+                      className="w-full h-full object-contain p-4"
+                    />
+                  </motion.div>
                 </div>
                 <CardTitle className="text-lg">{manufacturer.name}</CardTitle>
                 <p className="text-sm text-gray-500">({manufacturer.country})</p>
@@ -205,9 +231,15 @@ export default function ManufacturerPage() {
               <CardContent>
                 <p className="text-gray-600 text-sm text-center">{manufacturer.description}</p>
                 {selectedManufacturer === manufacturer.id && (
-                  <div className="mt-4 p-2 bg-green-50 rounded-lg">
-                    <p className="text-green-700 text-sm font-medium text-center">✓ Вибрано</p>
-                  </div>
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="mt-4 p-2 bg-green-50 rounded-lg"
+                  >
+                    <p className="text-green-700 text-sm font-medium text-center flex items-center justify-center">
+                      <CheckCircle className="w-4 h-4 mr-1" /> Вибрано
+                    </p>
+                  </motion.div>
                 )}
               </CardContent>
               {selectedManufacturer === manufacturer.id && (
@@ -217,19 +249,24 @@ export default function ManufacturerPage() {
                       e.stopPropagation()
                       handleNext(manufacturer.id)
                     }}
-                    className="bg-green-600 hover:bg-green-700 w-full mt-4"
+                    className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 w-full mt-4 group"
                   >
                     Далі: Вибір серії
-                    <ArrowRight className="w-4 h-4 ml-2" />
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </CardFooter>
               )}
-            </Card>
+            </AnimatedCard>
           ))}
         </div>
 
         {/* Help Section */}
-        <div className="mt-12 bg-blue-50 rounded-lg p-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+          className="mt-12 bg-blue-50 rounded-lg p-6 shadow-md"
+        >
           <h3 className="text-lg font-semibold text-blue-900 mb-2">Не знаєте виробника вашого трактора?</h3>
           <p className="text-blue-700 mb-4">
             Зв'яжіться з нашим менеджером, і він допоможе визначити виробника та модель за фотографією або серійним
@@ -238,11 +275,14 @@ export default function ManufacturerPage() {
           <Button
             asChild
             variant="outline"
-            className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
+            className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white group"
           >
-            <a href="tel:+380686007030">Зателефонувати менеджеру</a>
+            <a href="tel:+380686007030">
+              <Phone className="w-4 h-4 mr-2" />
+              Зателефонувати менеджеру
+            </a>
           </Button>
-        </div>
+        </motion.div>
       </div>
     </div>
   )
