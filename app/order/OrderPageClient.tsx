@@ -4,8 +4,8 @@ import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, ArrowRight, CheckCircle, Phone } from "lucide-react"
-import { motion } from "framer-motion"
+import { ArrowLeft, ArrowRight, CheckCircle, Phone, Menu, X } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 import { AnimatedCard } from "@/components/ui/animated-card"
 import { SectionHeading } from "@/components/ui/section-heading"
 
@@ -13,6 +13,7 @@ type DiscType = "doubling" | "interrow" | "custom"
 
 export default function OrderPageClient() {
   const [selectedType, setSelectedType] = useState<DiscType | null>(null)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const discTypes = [
     {
@@ -45,18 +46,19 @@ export default function OrderPageClient() {
 
   const handleNext = () => {
     if (selectedType) {
-      // Navigate to manufacturer selection
       window.location.href = `/order/manufacturer?type=${selectedType}`
     }
+  }
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen)
   }
 
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-100/80 backdrop-blur-md shadow-sm border-b">
-        <div className="container mx-auto px-4 py-3">
-          {" "}
-          {/* Reduced py-4 to py-3 for smaller menu */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-100/90 backdrop-blur-md shadow-sm border-b">
+        <div className="container mx-auto px-4 py-2">
           <div className="flex items-center justify-between">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -64,40 +66,108 @@ export default function OrderPageClient() {
               transition={{ duration: 0.5 }}
               className="flex items-center space-x-2"
             >
-              <Image src="/images/twinforce-logo.png" alt="Twinforce Wheels Logo" width={120} height={30} />{" "}
-              {/* Adjusted size */}
+              <Image
+                src="/images/twinforce-logo.png"
+                alt="Twinforce Wheels Logo"
+                width={90}
+                height={22}
+                className="h-5 w-auto sm:h-6 md:h-7"
+              />
             </motion.div>
+
+            {/* Desktop Navigation */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="hidden md:flex flex-1 justify-center space-x-6"
+              className="hidden md:flex flex-1 justify-center space-x-4 lg:space-x-6"
             >
-              <Link href="/" className="text-gray-600 hover:text-green-600 transition-colors relative group">
+              <Link
+                href="/"
+                className="text-gray-600 hover:text-green-600 transition-colors relative group text-sm lg:text-base"
+              >
                 {`Головна`}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
-              <Link href="/about" className="text-gray-600 hover:text-green-600 transition-colors relative group">
+              <Link
+                href="/about"
+                className="text-gray-600 hover:text-green-600 transition-colors relative group text-sm lg:text-base"
+              >
                 {`Про нас`}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
-              <Link href="/contacts" className="text-gray-600 hover:text-green-600 transition-colors relative group">
+              <Link
+                href="/contacts"
+                className="text-gray-600 hover:text-green-600 transition-colors relative group text-sm lg:text-base"
+              >
                 {`Контакти`}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
-              <Link href="/order" className="text-green-600 font-medium relative group">
+              <Link href="/order" className="text-green-600 font-medium relative group text-sm lg:text-base">
                 {`Замовити`}
                 <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-green-600"></span>
               </Link>
             </motion.div>
-            <div className="hidden md:block w-[120px]"></div> {/* Adjusted width to match logo */}
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <Button variant="ghost" size="sm" onClick={toggleMobileMenu} className="p-2">
+                {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </Button>
+            </div>
+
+            <div className="hidden md:block w-[90px] lg:w-[120px]"></div>
           </div>
+
+          {/* Mobile Navigation Menu */}
+          <AnimatePresence>
+            {isMobileMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+                className="md:hidden border-t border-gray-200 mt-2 pt-2 pb-2"
+              >
+                <div className="flex flex-col space-y-2">
+                  <Link
+                    href="/"
+                    className="text-gray-600 hover:text-green-600 py-2 px-2 rounded-md hover:bg-green-50 transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {`Головна`}
+                  </Link>
+                  <Link
+                    href="/about"
+                    className="text-gray-600 hover:text-green-600 py-2 px-2 rounded-md hover:bg-green-50 transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {`Про нас`}
+                  </Link>
+                  <Link
+                    href="/contacts"
+                    className="text-gray-600 hover:text-green-600 py-2 px-2 rounded-md hover:bg-green-50 transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {`Контакти`}
+                  </Link>
+                  <Link
+                    href="/order"
+                    className="text-green-600 font-medium py-2 px-2 rounded-md hover:bg-green-50 transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {`Замовити`}
+                  </Link>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </nav>
 
-      <div className="container mx-auto px-4 py-8 pt-24">
+      <div className="container mx-auto px-4 py-6 sm:py-8 pt-16 sm:pt-20">
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-          <Button asChild variant="ghost" className="mb-6 group">
+          <Button asChild variant="ghost" className="mb-4 sm:mb-6 group">
             <Link href="/">
               <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
               {`Повернутися на головну`}
@@ -110,35 +180,35 @@ export default function OrderPageClient() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mb-8"
+          className="mb-6 sm:mb-8"
         >
-          <div className="flex items-center justify-center space-x-4">
-            <div className="flex items-center">
-              <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-700 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-md">
+          <div className="flex items-center justify-center space-x-2 sm:space-x-4 overflow-x-auto pb-2">
+            <div className="flex items-center flex-shrink-0">
+              <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-green-500 to-green-700 text-white rounded-full flex items-center justify-center text-xs sm:text-sm font-bold shadow-md">
                 1
               </div>
-              <span className="ml-2 text-green-600 font-medium">{`Тип дисків`}</span>
+              <span className="ml-1 sm:ml-2 text-green-600 font-medium text-xs sm:text-sm">{`Тип дисків`}</span>
             </div>
-            <div className="w-8 h-px bg-gray-300"></div>
-            <div className="flex items-center">
-              <div className="w-8 h-8 bg-gray-300 text-gray-500 rounded-full flex items-center justify-center text-sm font-bold">
+            <div className="w-4 sm:w-8 h-px bg-gray-300 flex-shrink-0"></div>
+            <div className="flex items-center flex-shrink-0">
+              <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gray-300 text-gray-500 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold">
                 2
               </div>
-              <span className="ml-2 text-gray-500">{`Виробник`}</span>
+              <span className="ml-1 sm:ml-2 text-gray-500 text-xs sm:text-sm">{`Виробник`}</span>
             </div>
-            <div className="w-8 h-px bg-gray-300"></div>
-            <div className="flex items-center">
-              <div className="w-8 h-8 bg-gray-300 text-gray-500 rounded-full flex items-center justify-center text-sm font-bold">
+            <div className="w-4 sm:w-8 h-px bg-gray-300 flex-shrink-0"></div>
+            <div className="flex items-center flex-shrink-0">
+              <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gray-300 text-gray-500 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold">
                 3
               </div>
-              <span className="ml-2 text-gray-500">{`Модель`}</span>
+              <span className="ml-1 sm:ml-2 text-gray-500 text-xs sm:text-sm">{`Модель`}</span>
             </div>
-            <div className="w-8 h-px bg-gray-300"></div>
-            <div className="flex items-center">
-              <div className="w-8 h-8 bg-gray-300 text-gray-500 rounded-full flex items-center justify-center text-sm font-bold">
+            <div className="w-4 sm:w-8 h-px bg-gray-300 flex-shrink-0"></div>
+            <div className="flex items-center flex-shrink-0">
+              <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gray-300 text-gray-500 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold">
                 4
               </div>
-              <span className="ml-2 text-gray-500">{`Контакти`}</span>
+              <span className="ml-1 sm:ml-2 text-gray-500 text-xs sm:text-sm">{`Контакти`}</span>
             </div>
           </div>
         </motion.div>
@@ -147,7 +217,7 @@ export default function OrderPageClient() {
         <SectionHeading title={`Замовлення дисків`} subtitle={`Крок 1: Виберіть для чого потрібні диски`} />
 
         {/* Disc Type Selection */}
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12">
           {discTypes.map((type, index) => (
             <AnimatedCard
               key={type.id}
@@ -157,7 +227,7 @@ export default function OrderPageClient() {
               }`}
               onClick={() => setSelectedType(type.id)}
             >
-              <div className="aspect-video mb-4 overflow-hidden rounded-lg">
+              <div className="aspect-video mb-3 sm:mb-4 overflow-hidden rounded-lg">
                 <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
                   <Image
                     src={type.image || "/placeholder.svg"}
@@ -168,15 +238,15 @@ export default function OrderPageClient() {
                   />
                 </motion.div>
               </div>
-              <h3 className="text-lg font-semibold mb-2">{type.title}</h3>
-              <p className="text-gray-600 mb-4">{type.description}</p>
+              <h3 className="text-base sm:text-lg font-semibold mb-2">{type.title}</h3>
+              <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base">{type.description}</p>
               <div className="space-y-2">
-                <p className="font-medium text-sm text-gray-700">{`Варіанти:`}</p>
-                <ul className="text-sm text-gray-600 space-y-1">
+                <p className="font-medium text-xs sm:text-sm text-gray-700">{`Варіанти:`}</p>
+                <ul className="text-xs sm:text-sm text-gray-600 space-y-1">
                   {type.options.map((option, index) => (
-                    <li key={index} className="flex items-center">
-                      <span className="w-1.5 h-1.5 bg-green-600 rounded-full mr-2"></span>
-                      {option}
+                    <li key={index} className="flex items-start">
+                      <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-green-600 rounded-full mr-2 mt-1.5 sm:mt-2 flex-shrink-0"></span>
+                      <span className="leading-tight">{option}</span>
                     </li>
                   ))}
                 </ul>
@@ -185,10 +255,10 @@ export default function OrderPageClient() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="mt-4 p-2 bg-green-50 rounded-lg"
+                  className="mt-3 sm:mt-4 p-2 bg-green-50 rounded-lg"
                 >
-                  <p className="text-green-700 text-sm font-medium flex items-center">
-                    <CheckCircle className="w-4 h-4 mr-1" /> {`Вибрано`}
+                  <p className="text-green-700 text-xs sm:text-sm font-medium flex items-center">
+                    <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 mr-1" /> {`Вибрано`}
                   </p>
                 </motion.div>
               )}
@@ -201,9 +271,9 @@ export default function OrderPageClient() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="flex justify-between items-center"
+          className="flex flex-col sm:flex-row justify-between items-center gap-4"
         >
-          <Button asChild variant="outline" className="group">
+          <Button asChild variant="outline" className="group w-full sm:w-auto">
             <Link href="/">
               <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
               {`Назад`}
@@ -213,7 +283,7 @@ export default function OrderPageClient() {
           <Button
             onClick={handleNext}
             disabled={!selectedType}
-            className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 group"
+            className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 group w-full sm:w-auto"
           >
             {`Далі: Вибір виробника`}
             <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -225,17 +295,17 @@ export default function OrderPageClient() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
-          className="mt-12 bg-blue-50 rounded-lg p-6 shadow-md"
+          className="mt-8 sm:mt-12 bg-blue-50 rounded-lg p-4 sm:p-6 shadow-md"
         >
-          <h3 className="text-lg font-semibold text-blue-900 mb-2">{`Потрібна допомога з вибором?`}</h3>
-          <p className="text-blue-700 mb-4">
+          <h3 className="text-base sm:text-lg font-semibold text-blue-900 mb-2">{`Потрібна допомога з вибором?`}</h3>
+          <p className="text-blue-700 mb-3 sm:mb-4 text-sm sm:text-base">
             {`Якщо ви не впевнені, який тип дисків вам потрібен, зв'яжіться з нашим менеджером для отримання безкоштовної
             консультації.`}
           </p>
           <Button
             asChild
             variant="outline"
-            className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white group"
+            className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white group w-full sm:w-auto"
           >
             <a href="tel:+380686007030">
               <Phone className="w-4 h-4 mr-2" />
