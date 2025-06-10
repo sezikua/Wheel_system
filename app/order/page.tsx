@@ -17,14 +17,14 @@ export default function OrderPage() {
       id: "doubling" as DiscType,
       title: "Система здвоювання широкі диски",
       description: "Для збільшення стабільності та зниження тиску на ґрунт",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/images/system-doubling.png",
       options: ["Передні + задні", "Задні", "Свій варіант (користувач прописує сам)"],
     },
     {
       id: "interrow" as DiscType,
       title: "Для роботи в міжрядді",
       description: "Вузькі диски для точного міжрядного обробітку",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/images/interrow-cultivation.png",
       options: [
         "Передні + задні",
         "Здвоєні задні + одинарні передні",
@@ -36,7 +36,7 @@ export default function OrderPage() {
       id: "custom" as DiscType,
       title: "Свій варіант",
       description: "Індивідуальне рішення під ваші потреби",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/images/custom-solutions.png",
       options: ["Свій варіант (користувач прописує сам)"],
     },
   ]

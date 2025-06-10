@@ -64,7 +64,7 @@ export default function HomePage() {
             <Card className="overflow-hidden hover:shadow-lg transition-shadow">
               <CardContent className="p-0">
                 <Image
-                  src="/placeholder.svg?height=300&width=400"
+                  src="/images/system-doubling.png"
                   alt="Трактор з широкими дисками"
                   width={400}
                   height={300}
@@ -80,7 +80,7 @@ export default function HomePage() {
             <Card className="overflow-hidden hover:shadow-lg transition-shadow">
               <CardContent className="p-0">
                 <Image
-                  src="/placeholder.svg?height=300&width=400"
+                  src="/images/interrow-cultivation.png"
                   alt="Трактор для міжрядного обробітку"
                   width={400}
                   height={300}
@@ -96,7 +96,7 @@ export default function HomePage() {
             <Card className="overflow-hidden hover:shadow-lg transition-shadow">
               <CardContent className="p-0">
                 <Image
-                  src="/placeholder.svg?height=300&width=400"
+                  src="/images/custom-solutions.png"
                   alt="Трактор з індивідуальною конфігурацією"
                   width={400}
                   height={300}
