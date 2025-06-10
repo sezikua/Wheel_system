@@ -1,10 +1,10 @@
 import nodemailer from "nodemailer"
 
 // Створюємо транспортер для відправки email
-export const transporter = nodemailer.createTransporter({
+export const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST || "mail.ecartoken.com",
   port: Number.parseInt(process.env.SMTP_PORT || "587"),
-  secure: false, // true для 465, false для інших портів
+  secure: false,
   auth: {
     user: process.env.SMTP_USER || "forms@kostrov.work",
     pass: process.env.SMTP_PASS || "%,50,caREov",
@@ -14,7 +14,7 @@ export const transporter = nodemailer.createTransporter({
   },
 })
 
-// Функція для відправки email
+// Функція для відправки email (без перевірки з'єднання)
 export async function sendEmail({
   to,
   subject,
@@ -27,19 +27,25 @@ export async function sendEmail({
   text?: string
 }) {
   try {
+    console.log("Attempting to send email to:", to)
+
     const info = await transporter.sendMail({
-      from: process.env.SMTP_FROM || "forms@kostrov.work",
+      from: `"TWINFORCE WHEELS" <${process.env.SMTP_FROM || "forms@kostrov.work"}>`,
       to,
       subject,
       html,
-      text: text || html.replace(/<[^>]*>/g, ""), // Видаляємо HTML теги для text версії
+      text: text || html.replace(/<[^>]*>/g, ""),
     })
 
-    console.log("Email sent:", info.messageId)
+    console.log("Email sent successfully:", info.messageId)
     return { success: true, messageId: info.messageId }
   } catch (error) {
     console.error("Email sending failed:", error)
-    return { success: false, error: error instanceof Error ? error.message : "Unknown error" }
+
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Unknown error",
+    }
   }
 }
 
