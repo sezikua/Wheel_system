@@ -4,9 +4,8 @@ import { useState } from "react"
 import { useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, ArrowRight, CheckCircle, Phone } from "lucide-react"
-import { motion } from "framer-motion"
-import { AnimatedCard } from "@/components/ui/animated-card"
+import { ArrowLeft, ArrowRight, CheckCircle, Phone, Menu, X } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 import { SectionHeading } from "@/components/ui/section-heading"
 import Image from "next/image"
 
@@ -22,6 +21,7 @@ export default function SeriesPageClient() {
   const manufacturer = searchParams.get("manufacturer")
   const [selectedSeries, setSelectedSeries] = useState<string | null>(null)
   const [selectedModel, setSelectedModel] = useState<string | null>(null)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const tractorData: TractorSeries = {
     "john-deere": {
@@ -213,13 +213,15 @@ export default function SeriesPageClient() {
     return names[id] || id
   }
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-100/80 backdrop-blur-md shadow-sm border-b">
-        <div className="container mx-auto px-4 py-3">
-          {" "}
-          {/* Reduced py-4 to py-3 for smaller menu */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-100/90 backdrop-blur-md shadow-sm border-b">
+        <div className="container mx-auto px-4 py-2">
           <div className="flex items-center justify-between">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -227,34 +229,102 @@ export default function SeriesPageClient() {
               transition={{ duration: 0.5 }}
               className="flex items-center space-x-2"
             >
-              <Image src="/images/twinforce-logo.png" alt="Twinforce Wheels Logo" width={120} height={30} />{" "}
-              {/* Adjusted size */}
+              <Image
+                src="/images/twinforce-logo.png"
+                alt="Twinforce Wheels Logo"
+                width={90}
+                height={22}
+                className="h-5 w-auto sm:h-6 md:h-7"
+              />
             </motion.div>
+
+            {/* Desktop Navigation */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="hidden md:flex flex-1 justify-center space-x-6"
+              className="hidden md:flex flex-1 justify-center space-x-4 lg:space-x-6"
             >
-              <Link href="/" className="text-gray-600 hover:text-green-600 transition-colors relative group">
+              <Link
+                href="/"
+                className="text-gray-600 hover:text-green-600 transition-colors relative group text-sm lg:text-base"
+              >
                 {`Головна`}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
-              <Link href="/about" className="text-gray-600 hover:text-green-600 transition-colors relative group">
+              <Link
+                href="/about"
+                className="text-gray-600 hover:text-green-600 transition-colors relative group text-sm lg:text-base"
+              >
                 {`Про нас`}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
-              <Link href="/contacts" className="text-gray-600 hover:text-green-600 transition-colors relative group">
+              <Link
+                href="/contacts"
+                className="text-gray-600 hover:text-green-600 transition-colors relative group text-sm lg:text-base"
+              >
                 {`Контакти`}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 group-hover:w-full transition-all duration-300"></span>
               </Link>
-              <Link href="/order" className="text-green-600 font-medium relative group">
+              <Link href="/order" className="text-green-600 font-medium relative group text-sm lg:text-base">
                 {`Замовити`}
                 <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-green-600"></span>
               </Link>
             </motion.div>
-            <div className="hidden md:block w-[120px]"></div> {/* Adjusted width to match logo */}
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <Button variant="ghost" size="sm" onClick={toggleMobileMenu} className="p-2">
+                {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </Button>
+            </div>
+
+            <div className="hidden md:block w-[90px] lg:w-[120px]"></div>
           </div>
+
+          {/* Mobile Navigation Menu */}
+          <AnimatePresence>
+            {isMobileMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+                className="md:hidden border-t border-gray-200 mt-2 pt-2 pb-2"
+              >
+                <div className="flex flex-col space-y-2">
+                  <Link
+                    href="/"
+                    className="text-gray-600 hover:text-green-600 py-2 px-2 rounded-md hover:bg-green-50 transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {`Головна`}
+                  </Link>
+                  <Link
+                    href="/about"
+                    className="text-gray-600 hover:text-green-600 py-2 px-2 rounded-md hover:bg-green-50 transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {`Про нас`}
+                  </Link>
+                  <Link
+                    href="/contacts"
+                    className="text-gray-600 hover:text-green-600 py-2 px-2 rounded-md hover:bg-green-50 transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {`Контакти`}
+                  </Link>
+                  <Link
+                    href="/order"
+                    className="text-green-600 font-medium py-2 px-2 rounded-md hover:bg-green-50 transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {`Замовити`}
+                  </Link>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </nav>
 
@@ -320,11 +390,15 @@ export default function SeriesPageClient() {
             <h2 className="text-xl font-semibold text-gray-900 mb-4">{`Серія трактора`}</h2>
             <div className="space-y-3">
               {availableSeries.map((series, index) => (
-                <AnimatedCard
+                <motion.div
                   key={series}
-                  delay={0.1 * (index + 1)}
-                  className={`cursor-pointer transition-all ${
-                    selectedSeries === series ? "ring-2 ring-green-600 shadow-md" : "hover:shadow-sm"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 * (index + 1) }}
+                  className={`cursor-pointer transition-all p-4 rounded-lg border ${
+                    selectedSeries === series
+                      ? "ring-2 ring-green-600 shadow-md bg-green-50/50 border-green-200"
+                      : "hover:shadow-sm bg-white border-gray-200 hover:border-gray-300"
                   }`}
                   onClick={() => {
                     setSelectedSeries(series)
@@ -343,7 +417,7 @@ export default function SeriesPageClient() {
                       </motion.span>
                     )}
                   </div>
-                </AnimatedCard>
+                </motion.div>
               ))}
             </div>
           </motion.div>
@@ -363,11 +437,12 @@ export default function SeriesPageClient() {
             {selectedSeries ? (
               <div className="space-y-2 max-h-96 overflow-y-auto pr-2">
                 {availableModels.map((model, index) => (
-                  <AnimatedCard
+                  <div
                     key={model}
-                    delay={0.1 * (index + 1)}
-                    className={`cursor-pointer transition-all ${
-                      selectedModel === model ? "ring-2 ring-green-600 shadow-md" : "hover:shadow-sm"
+                    className={`cursor-pointer transition-all p-4 rounded-lg border ${
+                      selectedModel === model
+                        ? "ring-2 ring-green-600 shadow-md bg-green-50/50 border-green-200"
+                        : "hover:shadow-sm bg-white border-gray-200 hover:border-gray-300"
                     }`}
                     onClick={() => setSelectedModel(model)}
                   >
@@ -383,14 +458,15 @@ export default function SeriesPageClient() {
                         </motion.span>
                       )}
                     </div>
-                  </AnimatedCard>
+                  </div>
                 ))}
 
                 {/* Custom Option */}
-                <AnimatedCard
-                  delay={0.1 * (availableModels.length + 1)}
-                  className={`cursor-pointer transition-all border-dashed ${
-                    selectedModel === "custom" ? "ring-2 ring-green-600 shadow-md" : "hover:shadow-sm"
+                <div
+                  className={`cursor-pointer transition-all p-4 rounded-lg border border-dashed ${
+                    selectedModel === "custom"
+                      ? "ring-2 ring-green-600 shadow-md bg-green-50/50 border-green-200"
+                      : "hover:shadow-sm bg-white border-gray-300 hover:border-gray-400"
                   }`}
                   onClick={() => setSelectedModel("custom")}
                 >
@@ -406,7 +482,7 @@ export default function SeriesPageClient() {
                       </motion.span>
                     )}
                   </div>
-                </AnimatedCard>
+                </div>
               </div>
             ) : (
               <div className="text-center py-8 text-gray-500">

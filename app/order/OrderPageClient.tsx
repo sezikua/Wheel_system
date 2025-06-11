@@ -6,7 +6,6 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, ArrowRight, CheckCircle, Phone, Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
-import { AnimatedCard } from "@/components/ui/animated-card"
 import { SectionHeading } from "@/components/ui/section-heading"
 
 type DiscType = "doubling" | "interrow" | "custom"
@@ -219,11 +218,15 @@ export default function OrderPageClient() {
         {/* Disc Type Selection */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12">
           {discTypes.map((type, index) => (
-            <AnimatedCard
+            <motion.div
               key={type.id}
-              delay={0.1 * (index + 1)}
-              className={`cursor-pointer transition-all ${
-                selectedType === type.id ? "ring-2 ring-green-600 shadow-lg" : "hover:shadow-md"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 * (index + 1) }}
+              className={`cursor-pointer transition-all p-4 rounded-lg border ${
+                selectedType === type.id
+                  ? "ring-2 ring-green-600 shadow-md bg-green-50/50 border-green-200"
+                  : "hover:shadow-sm bg-white border-gray-200 hover:border-gray-300"
               }`}
               onClick={() => setSelectedType(type.id)}
             >
@@ -255,14 +258,14 @@ export default function OrderPageClient() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="mt-3 sm:mt-4 p-2 bg-green-50 rounded-lg"
+                  className="mt-3 sm:mt-4 p-2 bg-green-100 rounded-lg"
                 >
                   <p className="text-green-700 text-xs sm:text-sm font-medium flex items-center">
                     <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 mr-1" /> {`Вибрано`}
                   </p>
                 </motion.div>
               )}
-            </AnimatedCard>
+            </motion.div>
           ))}
         </div>
 
