@@ -75,13 +75,6 @@ export default function ManufacturerPageClient() {
       description: `Німецький виробник з багаторічним досвідом`,
     },
     {
-      id: "mahindra",
-      name: `Mahindra & Mahindra`,
-      country: `Індія`,
-      image: "/placeholder.svg?height=150&width=200",
-      description: `Індійський виробник доступних та надійних тракторів`,
-    },
-    {
       id: "deutz-fahr",
       name: `Deutz-Fahr`,
       country: `Німеччина`,
@@ -95,10 +88,23 @@ export default function ManufacturerPageClient() {
       image: "/images/landini.png",
       description: `Італійський виробник з багатою історією`,
     },
+    {
+      id: "no-equipment",
+      name: `Не має техніки в списку`,
+      country: ``,
+      image: "/images/no-equipment-tractor.png", // Use the new image here
+      description: `Оберіть цей варіант, якщо вашої техніки немає в переліку. Ви зможете вказати деталі в коментарях.`,
+    },
   ]
 
   const handleNext = (manufacturerId: string) => {
-    window.location.href = `/order/series?type=${discType}&manufacturer=${manufacturerId}`
+    if (manufacturerId === "no-equipment") {
+      // If "no-equipment" is selected, skip series page and go directly to contact
+      window.location.href = `/order/contact?type=${discType}&manufacturer=${manufacturerId}&series=custom&model=custom`
+    } else {
+      // Otherwise, proceed to the series page
+      window.location.href = `/order/series?type=${discType}&manufacturer=${manufacturerId}`
+    }
   }
 
   const handleBack = () => {
