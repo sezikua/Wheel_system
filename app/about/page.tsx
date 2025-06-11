@@ -81,14 +81,15 @@ export default function AboutPage() {
                 максимального задоволення потреб наших клієнтів.`}
               </p>
             </div>
-            <div className="order-first lg:order-last">
-              <Image
-                src="/placeholder.svg?height=400&width=600"
-                alt={`Наше виробництво`}
-                width={600}
-                height={400}
-                className="rounded-lg shadow-lg w-full h-auto"
-              />
+            <div className="order-first lg:order-last relative w-full pt-[66.66%] rounded-lg overflow-hidden shadow-lg">
+              <iframe
+                src="https://www.youtube.com/embed/g8bz12L83AU?autoplay=1&loop=1&playlist=g8bz12L83AU&mute=1&controls=0&modestbranding=1&showinfo=0&rel=0"
+                frameBorder="0"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full"
+                title="Наше виробництво"
+              ></iframe>
             </div>
           </div>
         </section>
