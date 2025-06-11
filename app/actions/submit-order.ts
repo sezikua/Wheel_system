@@ -1,7 +1,5 @@
 "use server"
 
-import { processOrder, type OrderData } from "@/lib/order-handler"
-
 export async function submitOrder(formData: FormData) {
   try {
     console.log("=== Starting order submission ===")
@@ -36,26 +34,34 @@ export async function submitOrder(formData: FormData) {
       }
     }
 
-    // Створюємо об'єкт з даними замовлення
-    const orderData: OrderData = {
-      name,
-      phone,
-      email: email || undefined,
-      discType,
-      manufacturer,
-      series,
-      model,
-      comment: comment || undefined,
-    }
+    // Відправляємо email через API route
+    const emailResponse = await fetch(
+      `${process.env.VERCEL_URL ? "https://" + process.env.VERCEL_URL : "http://localhost:3000"}/api/send-email`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          phone,
+          email: email || undefined,
+          discType,
+          manufacturer,
+          series,
+          model,
+          comment: comment || undefined,
+        }),
+      },
+    )
 
-    // Обробляємо замовлення без використання nodemailer
-    const result = await processOrder(orderData)
+    const emailResult = await emailResponse.json()
 
-    if (!result.success) {
-      console.error("Order processing failed:", result.error)
+    if (!emailResult.success) {
+      console.error("Email sending failed:", emailResult.error)
       return {
         success: false,
-        error: "Помилка обробки замовлення. Будь ласка, спробуйте ще раз або зателефонуйте нам.",
+        error: "Помилка відправки замовлення. Будь ласка, спробуйте ще раз або зателефонуйте нам.",
       }
     }
 

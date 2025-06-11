@@ -1,3 +1,5 @@
+import { sendEmail, generateOrderEmailHTML } from "./email"
+
 // Типи для замовлення
 export type OrderData = {
   name: string
@@ -25,18 +27,33 @@ export function logOrder(orderData: OrderData) {
   console.log("========================")
 }
 
-// Функція для обробки замовлення без відправки email
+// Функція для обробки замовлення з відправкою email
 export async function processOrder(orderData: OrderData) {
   try {
     // Логуємо замовлення
     logOrder(orderData)
 
-    // Тут можна додати код для збереження замовлення в базу даних
-    // або відправки через webhook, якщо потрібно
+    // Відправляємо email на пошту Сергія Кострова
+    console.log("Sending email notification...")
+    const emailHTML = generateOrderEmailHTML(orderData)
+
+    const emailResult = await sendEmail({
+      to: process.env.SMTP_TO || "s.kostrov@agrosolar.com.ua", // отримувач - Сергій Костров
+      subject: `🚜 Нове замовлення дисків від ${orderData.name}`,
+      html: emailHTML,
+    })
+
+    if (emailResult.success) {
+      console.log("Email notification sent successfully:", emailResult.messageId)
+    } else {
+      console.error("Email notification failed:", emailResult.error)
+    }
 
     return {
       success: true,
       message: "Замовлення успішно зареєстровано",
+      emailSent: emailResult.success,
+      emailError: emailResult.success ? undefined : emailResult.error,
     }
   } catch (error) {
     console.error("Order processing error:", error)

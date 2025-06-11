@@ -1,20 +1,26 @@
 import nodemailer from "nodemailer"
 
-// Створюємо транспортер для відправки email
+// Створюємо транспортер з покращеними налаштуваннями
 export const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST || "mail.ecartoken.com",
   port: Number.parseInt(process.env.SMTP_PORT || "587"),
-  secure: false,
+  secure: false, // true для 465, false для інших портів
   auth: {
     user: process.env.SMTP_USER || "forms@kostrov.work",
     pass: process.env.SMTP_PASS || "%,50,caREov",
   },
   tls: {
     rejectUnauthorized: false,
+    ciphers: "SSLv3",
   },
+  connectionTimeout: 60000, // 60 секунд
+  greetingTimeout: 30000, // 30 секунд
+  socketTimeout: 60000, // 60 секунд
+  logger: true, // включаємо логування
+  debug: true, // включаємо debug режим
 })
 
-// Функція для відправки email (без перевірки з'єднання)
+// Функція для відправки email з повторними спробами
 export async function sendEmail({
   to,
   subject,
@@ -26,26 +32,45 @@ export async function sendEmail({
   html: string
   text?: string
 }) {
-  try {
-    console.log("Attempting to send email to:", to)
+  const maxRetries = 3
+  let lastError: Error | null = null
 
-    const info = await transporter.sendMail({
-      from: `"TWINFORCE WHEELS" <${process.env.SMTP_FROM || "forms@kostrov.work"}>`,
-      to,
-      subject,
-      html,
-      text: text || html.replace(/<[^>]*>/g, ""),
-    })
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      console.log(`Email sending attempt ${attempt}/${maxRetries} to:`, to)
 
-    console.log("Email sent successfully:", info.messageId)
-    return { success: true, messageId: info.messageId }
-  } catch (error) {
-    console.error("Email sending failed:", error)
+      // Перевіряємо з'єднання перед відправкою
+      if (attempt === 1) {
+        console.log("Verifying SMTP connection...")
+        await transporter.verify()
+        console.log("SMTP connection verified successfully")
+      }
 
-    return {
-      success: false,
-      error: error instanceof Error ? error.message : "Unknown error",
+      const info = await transporter.sendMail({
+        from: `"TWINFORCE WHEELS" <${process.env.SMTP_FROM || "forms@kostrov.work"}>`,
+        to,
+        subject,
+        html,
+        text: text || html.replace(/<[^>]*>/g, ""),
+      })
+
+      console.log("Email sent successfully:", info.messageId)
+      return { success: true, messageId: info.messageId }
+    } catch (error) {
+      lastError = error as Error
+      console.error(`Email sending attempt ${attempt} failed:`, error)
+
+      if (attempt < maxRetries) {
+        console.log(`Waiting 2 seconds before retry...`)
+        await new Promise((resolve) => setTimeout(resolve, 2000))
+      }
     }
+  }
+
+  console.error("All email sending attempts failed")
+  return {
+    success: false,
+    error: lastError?.message || "Unknown error",
   }
 }
 
