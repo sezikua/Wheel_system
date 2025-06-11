@@ -34,9 +34,9 @@ export async function submitOrder(formData: FormData) {
       }
     }
 
-    // Відправляємо email через API route
-    const emailResponse = await fetch(
-      `${process.env.VERCEL_URL ? "https://" + process.env.VERCEL_URL : "http://localhost:3000"}/api/send-email`,
+    // Відправляємо дані в Telegram через новий API route
+    const telegramResponse = await fetch(
+      `${process.env.VERCEL_URL ? "https://" + process.env.VERCEL_URL : "http://localhost:3000"}/api/telegram-webhook`,
       {
         method: "POST",
         headers: {
@@ -55,20 +55,20 @@ export async function submitOrder(formData: FormData) {
       },
     )
 
-    const emailResult = await emailResponse.json()
+    const telegramResult = await telegramResponse.json()
 
-    if (!emailResult.success) {
-      console.error("Email sending failed:", emailResult.error)
+    if (!telegramResult.success) {
+      console.error("Telegram notification failed:", telegramResult.error)
       return {
         success: false,
-        error: "Помилка відправки замовлення. Будь ласка, спробуйте ще раз або зателефонуйте нам.",
+        error: "Помилка відправки замовлення в Telegram. Будь ласка, спробуйте ще раз або зателефонуйте нам.",
       }
     }
 
     console.log("=== Order submission completed successfully ===")
     return {
       success: true,
-      message: "Замовлення успішно відправлено",
+      message: "Замовлення успішно відправлено в Telegram!",
     }
   } catch (error) {
     console.error("=== Error in submitOrder ===")

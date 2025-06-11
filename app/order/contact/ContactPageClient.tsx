@@ -45,10 +45,23 @@ export default function ContactPageClient() {
   }
 
   const handleReview = () => {
-    if (formData.name && formData.phone) {
-      setShowReview(true)
-      setSubmitError(null)
+    // Перевірка, чи всі обов'язкові дані замовлення присутні
+    const isOrderDetailsComplete = discType && manufacturer && series && model
+
+    if (!formData.name || !formData.phone) {
+      setSubmitError("Будь ласка, заповніть всі обов'язкові контактні дані (Ім'я та Телефон).")
+      return
     }
+
+    if (!isOrderDetailsComplete) {
+      setSubmitError(
+        "Будь ласка, переконайтеся, що ви пройшли всі попередні кроки замовлення (Тип дисків, Виробник, Модель).",
+      )
+      return
+    }
+
+    setShowReview(true)
+    setSubmitError(null)
   }
 
   const handleSubmit = async () => {
