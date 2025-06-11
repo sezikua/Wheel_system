@@ -6,13 +6,59 @@ import type { Metadata } from "next"
 import Image from "next/image"
 
 export const metadata: Metadata = {
-  title: `Контакти - TractorDiscs`,
+  title: `Контакти`, // Буде об'єднано з template з layout.tsx
   description: `Зв'яжіться з нами для отримання консультації або оформлення замовлення. Ми завжди готові допомогти вам підібрати найкращі диски для вашого трактора.`,
 }
 
 export default function ContactsPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "TWINFORCE WHEELS",
+    image: "https://your-domain.com/images/twinforce-logo.png", // Замініть на ваш реальний домен
+    "@id": "https://your-domain.com/contacts", // Замініть на ваш реальний домен
+    url: "https://your-domain.com/contacts", // Замініть на ваш реальний домен
+    telephone: "+380686007030",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Точну адресу офісу та складу уточнюйте по телефону", // Якщо немає точної адреси, можна залишити так або вказати район
+      addressLocality: "Київ",
+      addressRegion: "Київська область",
+      addressCountry: "UA",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: "50.4501", // Приблизні координати Києва
+      longitude: "30.5234",
+    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "08:00",
+        closes: "18:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: "Saturday",
+        opens: "09:00",
+        closes: "15:00",
+      },
+    ],
+    priceRange: "₴₴", // Приблизний ціновий діапазон
+    // Додайте відгуки, якщо вони є
+    // aggregateRating: {
+    //   "@type": "AggregateRating",
+    //   ratingValue: "4.8",
+    //   reviewCount: "500",
+    // },
+  }
+
   return (
     <div className="min-h-screen bg-white">
+      {/* Додаємо JSON-LD скрипт */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
       {/* Navigation */}
       <nav className="bg-gray-100/90 backdrop-blur-md shadow-sm border-b">
         <div className="container mx-auto px-4 py-2">
