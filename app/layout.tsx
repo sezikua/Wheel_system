@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     template: "%s | TWINFORCE WHEELS",
   },
   description: `Професійні диски для тракторів. Сучасне виробництво систем здвоювання та систем для роботи в міжрядному обробітку. Якість, надійність та індивідуальний підхід до кожного клієнта.`,
-  generator: `v0.dev`,
+  generator: `Built by kostrov.work`,
   applicationName: "TWINFORCE WHEELS",
   keywords: [
     "диски для тракторів",
