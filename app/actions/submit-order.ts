@@ -36,7 +36,7 @@ export async function submitOrder(formData: FormData) {
 
     // Відправляємо дані в Telegram через новий API route
     const telegramResponse = await fetch(
-      `${process.env.VERCEL_URL ? "https://" + process.env.VERCEL_URL : "http://localhost:3000"}/api/telegram-webhook`,
+      "/api/telegram-webhook",
       {
         method: "POST",
         headers: {
