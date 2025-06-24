@@ -52,7 +52,7 @@ export async function submitOrder(formData: FormData) {
     const telegramResponse = await fetch(
       telegramWebhookUrl, // <-- Використовуємо повний, абсолютний URL
       {
-        method: "POST",
+        method: "POST", // ЗАПЕВНІТЬСЯ, ЩО ЦЕ МЕТОД POST
         headers: {
           "Content-Type": "application/json",
         },
