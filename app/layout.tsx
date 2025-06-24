@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "TWINFORCE WHEELS - Диски для тракторів",
     description: `Професійні диски для тракторів. Сучасне виробництво систем здвоювання та систем для роботи в міжрядному обробітку. Якість, надійність та індивідуальний підхід до кожного клієнта.`,
-    url: "https://your-domain.com", // Замініть на ваш реальний домен
+    url: "https://wheels.agrotyres.com.ua/", // Замініть на ваш реальний домен
     siteName: "TWINFORCE WHEELS",
     images: [
       {
