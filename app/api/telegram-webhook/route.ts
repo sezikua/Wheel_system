@@ -26,8 +26,7 @@ function getManufacturerName(id: string) {
   return names[id] || id;
 }
 
-// Next.js App Router API Route. НЕ використовуйте "use server" тут.
-export const runtime = "nodejs"; // Зазначення середовища виконання
+export const runtime = "nodejs";
 
 export async function POST(request: Request) {
   try {
@@ -78,7 +77,6 @@ ${comment ? `💬 *Коментар:* ${comment}` : ""}
     console.log("Webhook: Сформоване повідомлення для Telegram:", telegramMessage);
     console.log("Webhook: Відправка до Telegram API URL:", `https://api.telegram.org/bot${telegramBotToken}/sendMessage`);
 
-
     // Відправка в Telegram API
     const telegramUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
     const telegramResponse = await fetch(telegramUrl, {
@@ -112,7 +110,6 @@ ${comment ? `💬 *Коментар:* ${comment}` : ""}
     console.error("--- Webhook: Загальна помилка в /api/telegram-webhook ---");
     console.error("Webhook: Помилка:", error);
 
-    // Важливо: завжди повертати JSON-відповідь, навіть у випадку помилки
     return NextResponse.json(
       {
         success: false,
@@ -123,3 +120,21 @@ ${comment ? `💬 *Коментар:* ${comment}` : ""}
     );
   }
 }
+
+// Додаємо обробку для інших HTTP-методів, щоб завжди повертати JSON
+export async function GET() {
+  console.log("Webhook: Отримано GET запит до /api/telegram-webhook. Метод не дозволений.");
+  return NextResponse.json(
+    { success: false, message: "Метод GET не дозволений для цього API роуту. Використовуйте POST." },
+    { status: 405 }
+  );
+}
+
+export async function HEAD() {
+  console.log("Webhook: Отримано HEAD запит до /api/telegram-webhook. Метод не дозволений.");
+  return NextResponse.json(
+    { success: false, message: "Метод HEAD не дозволений для цього API роуту. Використовуйте POST." },
+    { status: 405 }
+  );
+}
+// Можете додати інші методи (PUT, DELETE) за потреби
