@@ -34,9 +34,24 @@ export async function submitOrder(formData: FormData) {
       }
     }
 
+    // --- ПОЧАТОК ВИПРАВЛЕННЯ ---
+    // Визначаємо базовий URL для серверного запиту.
+    // process.env.VERCEL_URL автоматично надається Vercel для серверних функцій.
+    // Додаємо 'https://' вручну, оскільки VERCEL_URL не включає протокол.
+    // Для локальної розробки використовуємо 'http://localhost:3000'.
+    const baseUrl = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : 'http://localhost:3000'; // Переконайтесь, що порт 3000 є вашим локальним портом
+
+    const telegramWebhookUrl = `${baseUrl}/api/telegram-webhook`;
+
+    console.log("Sending to webhook URL:", telegramWebhookUrl); // Додайте для дебагу
+    // --- КІНЕЦЬ ВИПРАВЛЕННЯ ---
+
+
     // Відправляємо дані в Telegram через новий API route
     const telegramResponse = await fetch(
-      "/api/telegram-webhook",
+      telegramWebhookUrl, // <-- Тепер використовуємо повний URL
       {
         method: "POST",
         headers: {
