@@ -26,12 +26,12 @@ function getManufacturerName(id: string) {
   return names[id] || id;
 }
 
-// Зазначення середовища виконання для Vercel (не "use server")
-export const runtime = "nodejs";
+// Next.js App Router API Route. НЕ використовуйте "use server" тут.
+export const runtime = "nodejs"; // Зазначення середовища виконання
 
 export async function POST(request: Request) {
   try {
-    console.log("--- Webhook: Отримано запит до /api/telegram-webhook ---");
+    console.log("--- Webhook: Отримано POST запит до /api/telegram-webhook ---");
 
     const body = await request.json();
     const { name, phone, email, discType, manufacturer, series, model, comment } = body;
@@ -51,7 +51,7 @@ export async function POST(request: Request) {
     const telegramChatId = process.env.TELEGRAM_CHAT_ID;
 
     if (!telegramBotToken || !telegramChatId) {
-      console.error("Webhook: TELEGRAM_BOT_TOKEN або TELEGRAM_CHAT_ID відсутні в оточенні!");
+      console.error("Webhook: TELEGRAM_BOT_TOKEN або TELEGRAM_CHAT_ID відсутні в оточенні Vercel!");
       return NextResponse.json({ success: false, message: "Конфігурація Telegram бота відсутня на сервері." }, { status: 500 });
     }
 
