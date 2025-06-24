@@ -52,7 +52,7 @@ export async function submitOrder(formData: FormData) {
     const telegramResponse = await fetch(
       telegramWebhookUrl, // <-- Використовуємо повний, абсолютний URL
       {
-        method: "POST", // ЗАПЕВНІТЬСЯ, ЩО ЦЕ МЕТОД POST
+        method: "POST", // Метод має бути POST
         headers: {
           "Content-Type": "application/json",
         },
@@ -69,7 +69,18 @@ export async function submitOrder(formData: FormData) {
       },
     );
 
-    const telegramResult = await telegramResponse.json();
+    // Зчитуємо відповідь як текст, щоб уникнути помилки парсингу, якщо це не JSON
+    const responseText = await telegramResponse.text();
+    console.log("Raw response from webhook:", responseText);
+
+    let telegramResult;
+    try {
+        telegramResult = JSON.parse(responseText);
+    } catch (parseError) {
+        console.error("Failed to parse webhook response as JSON:", parseError);
+        console.error("Response that caused error (first 500 chars):", responseText.substring(0, 500)); // Логуємо частину відповіді
+        throw new Error("Невідома відповідь від сервера. Будь ласка, спробуйте ще раз."); // Нове повідомлення для користувача
+    }
 
     if (!telegramResult.success) {
       console.error("Telegram notification failed:", telegramResult.error);
@@ -90,7 +101,7 @@ export async function submitOrder(formData: FormData) {
 
     return {
       success: false,
-      error: "Внутрішня помилка сервера. Спробуйте ще раз або зателефонуйте нам.",
+      error: error instanceof Error ? error.message : "Внутрішня помилка сервера. Спробуйте ще раз або зателефонуйте нам.",
     };
   }
 }
