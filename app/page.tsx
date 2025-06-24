@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Диски для вашої сільгосп техніки - Головна",
     description: `Професійні диски для тракторів. Сучасне виробництво систем здвоювання та систем для роботи в міжрядному обробітку.`,
-    url: "https://your-domain.com/", // Замініть на ваш реальний домен
+    url: "https://wheels.agrotyres.com.ua/", // Замініть на ваш реальний домен
     images: [
       {
         url: "/images/tractor-hero.png", // Специфічне зображення для головної сторінки
