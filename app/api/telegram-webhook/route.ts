@@ -39,13 +39,11 @@ export async function POST(request: Request) {
       name, phone, email, discType, manufacturer, series, model, comment
     });
 
-    // Валідація вхідних даних
     if (!name || !phone || !discType || !manufacturer || !series || !model) {
       console.error("Webhook: Валідація провалена - відсутні обов'язкові поля.");
       return NextResponse.json({ success: false, message: "Не всі обов'язкові поля заповнені" }, { status: 400 });
     }
 
-    // Перевірка наявності змінних оточення Telegram
     const telegramBotToken = process.env.TELEGRAM_BOT_TOKEN;
     const telegramChatId = process.env.TELEGRAM_CHAT_ID;
 
@@ -54,7 +52,6 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, message: "Конфігурація Telegram бота відсутня на сервері." }, { status: 500 });
     }
 
-    // Формуємо повідомлення для Telegram
     const telegramMessage = `
 🔔 *Нове замовлення дисків з сайту*
 
@@ -77,7 +74,6 @@ ${comment ? `💬 *Коментар:* ${comment}` : ""}
     console.log("Webhook: Сформоване повідомлення для Telegram:", telegramMessage);
     console.log("Webhook: Відправка до Telegram API URL:", `https://api.telegram.org/bot${telegramBotToken}/sendMessage`);
 
-    // Відправка в Telegram API
     const telegramUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
     const telegramResponse = await fetch(telegramUrl, {
       method: "POST",
@@ -87,7 +83,7 @@ ${comment ? `💬 *Коментар:* ${comment}` : ""}
       body: JSON.stringify({
         chat_id: telegramChatId,
         text: telegramMessage,
-        parse_mode: "Markdown", // Використовуємо Markdown для форматування
+        parse_mode: "Markdown",
       }),
     });
 
@@ -121,7 +117,8 @@ ${comment ? `💬 *Коментар:* ${comment}` : ""}
   }
 }
 
-// Додаємо обробку для інших HTTP-методів, щоб завжди повертати JSON
+// Додаємо обробку для GET-запитів, щоб він завжди повертав JSON,
+// а не перенаправляв на сторінку входу Vercel. Це допоможе діагностувати проблему.
 export async function GET() {
   console.log("Webhook: Отримано GET запит до /api/telegram-webhook. Метод не дозволений.");
   return NextResponse.json(
@@ -129,12 +126,3 @@ export async function GET() {
     { status: 405 }
   );
 }
-
-export async function HEAD() {
-  console.log("Webhook: Отримано HEAD запит до /api/telegram-webhook. Метод не дозволений.");
-  return NextResponse.json(
-    { success: false, message: "Метод HEAD не дозволений для цього API роуту. Використовуйте POST." },
-    { status: 405 }
-  );
-}
-// Можете додати інші методи (PUT, DELETE) за потреби
