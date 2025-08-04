@@ -37,7 +37,7 @@ export default function OrderPageClient() {
     {
       id: "custom" as DiscType,
       title: `Свій варіант`,
-      description: `Індивідуальне рішення під ваші потреби`,
+      description: `Індивідуальне рішення (Виготовлення основних дисків, ремонт і т.д.)`,
       image: "/images/custom-solutions.png",
       options: [`Свій варіант (користувач прописує сам)`],
     },
